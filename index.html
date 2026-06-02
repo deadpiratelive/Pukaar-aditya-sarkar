@@ -364,6 +364,11 @@
         .animate-eye-shiver {
             animation: eye-shiver 0.2s infinite;
         }
+        .blend-hero-title {
+            mix-blend-mode: screen;
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+        }
     </style>
 </head>
 <body class="bg-void text-on-surface inter-regular selection:bg-burnt-crimson selection:text-white">
@@ -445,8 +450,8 @@
             </div>
             <!-- Hero Title Images Fader -->
             <div class="relative w-full max-w-2xl h-48 md:h-64 z-10 flex items-center justify-center mb-6">
-                <img id="hero-title-sarkar" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-100" src="pukaar_sarkar.png" alt="PUKAAR - Sarkar" />
-                <img id="hero-title-aditya" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-0" src="pukaar_aditya.png" alt="PUKAAR - Aditya Billboard" />
+                <img id="hero-title-sarkar" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-100 blend-hero-title" src="pukaar_sarkar.png" alt="PUKAAR - Sarkar" />
+                <img id="hero-title-aditya" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-0 blend-hero-title" src="pukaar_aditya.png" alt="PUKAAR - Aditya Billboard" />
             </div>
             <p class="font-body-lg text-body-lg max-w-2xl mb-12 text-muted-echo relative z-10">Listen for the Call.</p>
             <a class="btn-primary-glass px-10 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest relative z-10" href="#" data-target="player-section" data-autoplay="true">
