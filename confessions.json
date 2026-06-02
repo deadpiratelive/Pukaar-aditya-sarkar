@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "text": "The quiet isn't empty. It's heavy. It presses against the walls until the room feels too small to breathe in.",
+    "mood": "silence",
+    "timestamp": 1780308000000
+  },
+  {
+    "id": 2,
+    "text": "I tried to burn the bridges, but the sparks just caught the dry grass. Now everything is burning, and I'm still on the wrong side.",
+    "mood": "friction",
+    "timestamp": 1780308010000
+  },
+  {
+    "id": 3,
+    "text": "It wasn't a voice, but a pull. A sudden, terrifying clarity that staying still was the only true failure.",
+    "mood": "call",
+    "timestamp": 1780308020000
+  },
+  {
+    "id": 4,
+    "text": "Waiting for an answer that was never promised.",
+    "mood": "silence",
+    "timestamp": 1780308030000
+  },
+  {
+    "id": 5,
+    "text": "The hardest part isn't the fall, it's the sudden stop. The sudden realization that the safety net was just a shadow.",
+    "mood": "friction",
+    "timestamp": 1780308040000
+  },
+  {
+    "id": 6,
+    "text": "I heard it in the static. A rhythm beneath the noise. It told me to wake up.",
+    "mood": "call",
+    "timestamp": 1780308050000
+  }
+]

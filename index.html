@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PUKAAR | The Lyrical Descent</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#111319",
+                        "on-surface-variant": "#c7c6cb",
+                        "inverse-surface": "#e2e2ea",
+                        "outline-variant": "#46464b",
+                        "surface-container-lowest": "#0c0e14",
+                        "primary": "#c7c6ca",
+                        "primary-container": "#0d0e11",
+                        "on-secondary": "#263047",
+                        "tertiary-container": "#260200",
+                        "inverse-on-surface": "#2e3037",
+                        "secondary-fixed-dim": "#bcc6e3",
+                        "on-tertiary-fixed": "#3e0400",
+                        "surface": "#111319",
+                        "surface-tint": "#c7c6ca",
+                        "on-background": "#e2e2ea",
+                        "surface-container": "#1d1f25",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#ffdad3",
+                        "on-secondary-fixed-variant": "#3d465e",
+                        "tertiary": "#ffb4a5",
+                        "surface-container-high": "#282a30",
+                        "surface-variant": "#33353b",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#7b7b7f",
+                        "on-primary": "#303034",
+                        "on-secondary-container": "#aeb8d4",
+                        "on-surface": "#e2e2ea",
+                        "inverse-primary": "#5e5e62",
+                        "outline": "#909095",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-secondary-fixed": "#111b31",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#8d1703",
+                        "on-tertiary-container": "#d74c33",
+                        "primary-fixed": "#e3e2e6",
+                        "surface-container-low": "#191b21",
+                        "secondary": "#bcc6e3",
+                        "secondary-container": "#3f4961",
+                        "tertiary-fixed-dim": "#ffb4a5",
+                        "on-tertiary": "#650b00",
+                        "background": "#111319",
+                        "on-primary-fixed": "#1b1b1f",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#c7c6ca",
+                        "surface-bright": "#37393f",
+                        "on-primary-fixed-variant": "#46464a",
+                        "surface-container-highest": "#33353b",
+                        "void": "#0D0E11",
+                        "cold-indigo": "#182238",
+                        "burnt-crimson": "#D94E34",
+                        "sunset-gold": "#F2B035"
+                    },
+                    borderRadius: {
+                        "sm": "0.125rem",
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "section-gap": "120px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Syne"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Syne"],
+                        "headline-lg-mobile": ["Syne"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Syne"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["48px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["30px", {"lineHeight": "1.35", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --void: #0D0E11;
+            --cold-indigo: #182238;
+            --burnt-crimson: #D94E34;
+            --sunset-gold: #F2B035;
+        }
+
+        body {
+            background-color: var(--void);
+            color: #e2e2ea;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Film grain overlay */
+        .film-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            animation: grain-shift 0.8s steps(4) infinite;
+        }
+
+        @keyframes grain-shift {
+            0% { transform: translate(0, 0); opacity: 0.04; }
+            50% { transform: translate(-1%, 1%); opacity: 0.07; }
+            100% { transform: translate(1%, -1%); opacity: 0.04; }
+        }
+
+        /* Glassmorphism elements */
+        .glass-card, .glass-panel {
+            background: rgba(25, 27, 33, 0.3);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25); /* Stronger premium top-edge highlight */
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Semantic Design System Helpers */
+        .bg-ash { background-color: #1c1e24; } /* Coal Gray surface container */
+        .bg-call { background-color: #F2B035; } /* Sunset Gold */
+        .bg-friction { background-color: #D94E34; } /* Burnt Crimson */
+        
+        /* Softer descriptive text with readable contrast */
+        .text-muted-echo {
+            color: #c7c6cb;
+            opacity: 0.75; /* A touch brighter for readability while retaining atmospheric mood */
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, var(--cold-indigo), transparent),
+                        radial-gradient(circle at bottom left, #0d0e11, transparent);
+        }
+
+        .glow-ember {
+            box-shadow: 0 0 40px 0 rgba(217, 78, 52, 0.4);
+        }
+        
+        .glow-silence { box-shadow: 0 0 40px -10px rgba(24, 34, 56, 0.5); }
+        .glow-friction { box-shadow: 0 0 40px -10px rgba(217, 78, 52, 0.4); }
+        .glow-call { box-shadow: 0 0 40px -10px rgba(242, 176, 53, 0.4); }
+
+        .btn-primary-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--sunset-gold);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-glass:hover {
+            box-shadow: 0 0 20px var(--sunset-gold);
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes pulse-wave {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+        .animate-pulse-slow { animation: pulse-wave 8s ease-in-out infinite; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow { animation: rotate 12s linear infinite; }
+
+        @keyframes neon-pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); border-color: rgba(255,255,255,0.1); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); border-color: rgba(239, 68, 68, 0.5); }
+        }
+        .animate-neon-pulse { animation: neon-pulse 3s ease-in-out infinite; }
+
+        /* Custom Scrollbar for Lyrics */
+        .lyrics-scroll::-webkit-scrollbar { width: 4px; }
+        .lyrics-scroll::-webkit-scrollbar-track { background: transparent; }
+        .lyrics-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+
+        /* Lyrics Hover & Hierarchy */
+        .lyric-line {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #c7c6cb;
+            opacity: 0.25; /* Soften inactive lines */
+        }
+        .lyric-line:hover {
+            color: #F2B035 !important;
+            opacity: 1 !important;
+            text-shadow: 0 0 8px rgba(242, 176, 53, 0.4); /* Softer glow */
+            transform: translateX(8px);
+        }
+        .active-lyric {
+            color: #e2e2ea !important;
+            opacity: 1 !important;
+            font-weight: 600;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.15); /* Softer active line highlight */
+        }
+        #lyrics-container:hover .lyric-line:not(:hover):not(.active-lyric) {
+            opacity: 0.15;
+        }
+
+        /* Missing CSS class definitions */
+        .glow-button {
+            box-shadow: 0 0 15px rgba(242, 176, 53, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(242, 176, 53, 0.6);
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+        }
+        .inter-regular {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Sparkle Animation for Seeker Head */
+        @keyframes pulse-glow {
+            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 10px #F2B035; }
+            50% { transform: translateY(-50%) scale(1.4); box-shadow: 0 0 20px #F2B035, 0 0 30px rgba(242, 176, 53, 0.6); }
+        }
+        .animate-pulse-glow { animation: pulse-glow 2s infinite ease-in-out; }
+
+        /* Section Wrappers transition states */
+        .section-wrapper {
+            transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(0);
+        }
+        .section-wrapper.fade-out {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .section-wrapper.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SVG Distortion Active Class */
+        .distort-active {
+            filter: url(#smoke-displacement);
+            will-change: filter;
+        }
+
+        /* Custom Noise Background for Threshold */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Sonic Threshold Layer */
+        #sonic-threshold {
+            transition: background-color 0.8s ease-in-out, backdrop-filter 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            background-color: rgba(13, 14, 17, 0);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+        }
+        #sonic-threshold.active {
+            background-color: rgba(13, 14, 17, 0.98);
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+        }
+
+        /* Zine layout details */
+        .atmospheric-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(140, 28, 19, 0.15) 0%, rgba(45, 50, 80, 0.1) 50%, transparent 100%);
+        }
+        .atmospheric-gradient-2 {
+            background: radial-gradient(circle at 80% 20%, rgba(45, 50, 80, 0.2) 0%, rgba(140, 28, 19, 0.05) 50%, transparent 100%);
+        }
+
+        /* Cinematic & Tactile Animations */
+        @keyframes ambient-drift {
+            0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+            50% { transform: scale(1.15) translate(3%, -2%); opacity: 1; }
+        }
+        .ambient-glow-drift {
+            animation: ambient-drift 20s ease-in-out infinite alternate;
+            will-change: transform, opacity;
+        }
+
+        @keyframes headline-breathe {
+            0%, 100% { letter-spacing: -0.01em; opacity: 0.95; filter: drop-shadow(0 0 2px rgba(255,255,255,0.05)); }
+            50% { letter-spacing: 0.04em; opacity: 1; filter: drop-shadow(0 0 12px rgba(242,176,53,0.18)); }
+        }
+        .animate-headline-breathe {
+            animation: headline-breathe 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes rumble {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            15% { transform: translate(-1.5px, 1.5px) rotate(-0.5deg); }
+            30% { transform: translate(-1.5px, -1.5px) rotate(0.5deg); }
+            45% { transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+            60% { transform: translate(1.5px, -1.5px) rotate(0deg); }
+            75% { transform: translate(-1px, 1px) rotate(0.5deg); }
+            90% { transform: translate(1px, -1px) rotate(-0.5deg); }
+        }
+        .rumble-active {
+            animation: rumble 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        /* Installation Styles */
+        .phase-btn {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .phase-btn.active {
+            background: rgba(242, 176, 53, 0.05);
+            border-color: #F2B035;
+            color: #F2B035;
+            box-shadow: 0 0 25px -5px rgba(242, 176, 53, 0.15);
+        }
+        .phase-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        #installation-display {
+            background: rgba(13, 14, 17, 0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .ember-particle-inst {
+            will-change: transform, opacity;
+        }
+        @keyframes eye-shiver {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 1px); }
+            40% { transform: translate(1px, -1.5px); }
+            60% { transform: translate(-1px, 2px); }
+            80% { transform: translate(2px, -1px); }
+        }
+        .animate-eye-shiver {
+            animation: eye-shiver 0.2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-void text-on-surface inter-regular selection:bg-burnt-crimson selection:text-white">
+    <!-- SVG Smoke Displacement Filter -->
+    <svg class="absolute w-0 h-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="smoke-displacement">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Shared Film Grain -->
+    <div class="film-grain"></div>
+
+    <!-- Background Music Element -->
+    <audio id="bg-audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mp3"/>
+    </audio>
+
+    <!-- Global Audio Control Floating Indicator -->
+    <div id="audio-control-btn" class="fixed bottom-6 left-6 z-[100] flex items-center gap-3 bg-surface/30 backdrop-blur-md px-4 py-2 border border-white/10 rounded-lg cursor-pointer hover:bg-white/5 active:scale-95 transition-all">
+        <span id="audio-icon" class="material-symbols-outlined text-sunset-gold">volume_off</span>
+        <span id="audio-status" class="font-label-sm text-label-sm text-muted-echo tracking-wider uppercase">[Music Muted]</span>
+    </div>
+
+    <!-- The Sonic Threshold (Transition Veil) -->
+    <div id="sonic-threshold" class="fixed inset-0 z-[9999] pointer-events-none opacity-0 flex flex-col items-center justify-center">
+        <!-- Concentrated dust particle texture -->
+        <div class="absolute inset-0 bg-noise opacity-5 animate-pulse-slow"></div>
+        <!-- Floating Ember Particles Container -->
+        <div id="ember-particle-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+        <!-- Shared Visual Thread: Pulse Ember -->
+        <div id="threshold-ember" class="w-3 h-3 rounded-full bg-call opacity-0 scale-50 transition-all duration-700 ease-out glow-call"></div>
+        <div id="threshold-status" class="mt-8 font-label-sm text-label-sm text-sunset-gold/30 tracking-[0.4em] uppercase opacity-0 transition-all duration-700 select-none">
+            [crossing threshold]
+        </div>
+    </div>
+
+    <!-- Global TopAppBar -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/30 backdrop-blur-xl border-b border-white/10">
+        <a href="#" data-target="home-section" class="font-headline-md text-headline-md font-bold tracking-widest text-on-surface uppercase">
+            PUKAAR
+        </a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a id="nav-home" class="nav-link text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md px-3 py-1 scale-95 transition-all" href="#" data-target="home-section">Home</a>
+            <a id="nav-player" class="nav-link text-on-surface-variant font-medium hover:text-on-surface transition-colors font-label-md text-label-md hover:bg-white/5 px-3 py-1 rounded transition-all duration-300" href="#" data-target="player-section">Lyrics</a>
+            <a id="nav-chronicles" class="nav-link text-on-surface-variant font-medium hover:text-on-surface transition-colors font-label-md text-label-md hover:bg-white/5 px-3 py-1 rounded transition-all duration-300" href="#" data-target="chronicles-section">The Call</a>
+            <a id="nav-void" class="nav-link text-on-surface-variant font-medium hover:text-on-surface transition-colors font-label-md text-label-md hover:bg-white/5 px-3 py-1 rounded transition-all duration-300" href="#" data-target="void-section">Confessional</a>
+        </div>
+        <a href="#" data-target="player-section" data-autoplay="true" class="hidden md:block glass-panel border-sunset-gold text-sunset-gold font-label-md text-label-md px-6 py-2 rounded-lg hover:shadow-[0_0_15px_rgba(242,176,53,0.3)] transition-all duration-300 font-bold uppercase tracking-wider text-center">
+            Listen Now
+        </a>
+        <!-- Mobile Menu trigger -->
+        <button id="mobile-menu-trigger" class="text-on-surface z-[100] md:hidden">
+            <span id="mobile-menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </nav>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-drawer" class="fixed inset-y-0 right-0 w-64 z-[99] bg-surface-dim/95 backdrop-blur-3xl border-l border-white/10 p-8 flex flex-col gap-8 justify-center translate-x-full transition-transform duration-500 md:hidden">
+        <a class="nav-link-mobile font-headline-md text-headline-md text-primary font-bold text-center" href="#" data-target="home-section" data-close-menu>Home</a>
+        <a class="nav-link-mobile font-headline-md text-headline-md text-on-surface-variant text-center" href="#" data-target="player-section" data-close-menu>Lyrics</a>
+        <a class="nav-link-mobile font-headline-md text-headline-md text-on-surface-variant text-center" href="#" data-target="chronicles-section" data-close-menu>The Call</a>
+        <a class="nav-link-mobile font-headline-md text-headline-md text-on-surface-variant text-center" href="#" data-target="void-section" data-close-menu>Confessional</a>
+        <a href="#" data-target="player-section" data-close-menu data-autoplay="true" class="mt-8 glass-panel border-sunset-gold text-sunset-gold font-label-md text-label-md py-3 rounded-lg text-center tracking-widest font-bold uppercase">Listen Now</a>
+    </div>
+
+    <!-- 1. HOME SECTION (Landing Screen) -->
+    <section id="home-section" class="section-wrapper">
+        <div class="relative min-h-screen flex flex-col items-center justify-center hero-gradient px-margin-mobile md:px-margin-desktop text-center overflow-hidden">
+            <!-- SVG Waveform -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                <svg class="animate-pulse-slow w-full max-w-4xl" fill="none" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 200C100 200 150 100 200 100C250 100 300 300 350 300C400 300 450 100 500 100C550 100 600 200 800 200" stroke="#F2B035" stroke-dasharray="10 10" stroke-width="2"></path>
+                    <path d="M0 200C100 200 150 150 200 150C250 150 300 250 350 250C400 250 450 150 500 150C550 150 600 200 800 200" stroke="#D94E34" stroke-width="1"></path>
+                </svg>
+            </div>
+            <h1 class="font-headline-xl text-headline-xl mb-6 tracking-tighter mix-blend-difference relative z-10 animate-headline-breathe">PUKAAR</h1>
+            <p class="font-body-lg text-body-lg max-w-2xl mb-12 text-muted-echo relative z-10">Listen for the Call.</p>
+            <a class="btn-primary-glass px-10 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest relative z-10" href="#" data-target="player-section" data-autoplay="true">
+                Enter the Noise
+            </a>
+            <!-- Atmospheric radial glow -->
+            <div class="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-[var(--burnt-crimson)] opacity-10 blur-[150px] rounded-full ambient-glow-drift"></div>
+        </div>
+
+        <!-- Context Section: The Call -->
+        <div class="py-section-gap px-margin-mobile md:px-margin-desktop bg-ash relative overflow-hidden" id="context">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                <!-- Cassette Mockup -->
+                <div class="relative flex justify-center">
+                    <div class="w-64 h-64 md:w-96 md:h-96 relative group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black to-zinc-800 rounded-xl transform rotate-3 shadow-2xl border border-white/5"></div>
+                        <div class="absolute inset-4 bg-[#111] rounded-lg border border-white/10 flex flex-col items-center justify-center p-8">
+                            <div class="animate-spin-slow w-48 h-48 rounded-full border-4 border-dashed border-zinc-700 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center border border-white/10">
+                                    <span class="material-symbols-outlined text-4xl text-on-surface-variant">album</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-center">
+                                <p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.3em] uppercase mb-1">Aircraft Production</p>
+                                <p class="font-headline-md text-headline-md text-primary">SIDE A</p>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--burnt-crimson)] opacity-10 rounded-xl mix-blend-overlay"></div>
+                    </div>
+                </div>
+                <!-- Narrative -->
+                <div class="space-y-8 relative z-10">
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight">Responding to <span class="text-[var(--burnt-crimson)]">The Call</span>.</h2>
+                    <div class="w-20 h-1 bg-[var(--burnt-crimson)]"></div>
+                    <p class="font-body-lg text-body-lg text-muted-echo leading-relaxed">
+                        Emerging from the late-night silence, Pukaar is a sonic transmission of longing and distance. In the quiet hours when memory drifts like smoke, Aditya Billboard and Sarkar translate the ache of waiting into an intimate, visceral hip-hop anthem.
+                    </p>
+                    <p class="font-body-md text-body-md text-muted-echo opacity-70">
+                        The raw production by Aircraft Production captures the friction of unspoken words and the vulnerability of being summoned back.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 pt-8">
+                        <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5">
+                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYQyj_oLLIp0-LJqYk8cbLdrs2jtXBuzTQA9NxdsPC8aBCMJ5zm96Oal5PmCkzR1itSEoqkomfaQzclF9TcHNzOVjvpHu0zJw-GYUjMzBjPSPhUFh9aM4_EwpLcSo6Vb6mCud2GqsvAHWj9NTgK2azTXIKfhhez4q7MLqMfdgrpq9Tqz-yPxPZPN45solxq7RXbcE_g74q0f4vabJyL76-qa8N-WcjLVz3rbBa6UkoA0oPyhEFN9xYoJtp_eKOcPClINR3ThrpaQ"/>
+                        </div>
+                        <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5 mt-8">
+                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlzS7IKg2ax3hP3O2zj3JM6iKEfGPYV5S4-TS8-8mgj-XKKcfLpKjmL9ALIIdHSaKYvgVCjcX3RvHngzjD7PYd4c7YxDsEKTzyGYbyxRuGXO1W_ePW_Zl6WRF2DfzEPfMigeuSkzNriT2KexzWi_M9P9JMcPcCqwTXpbW-x39t-UYDQG7GG3nZWx2vBF3xmV4ftxZGes6JHkoSj6szd6k4Zwk9_60DcGb4zwQjeVrXtDD6Ymb3ZYLyIyfGRbKaqp0EOX-sBHsuPA"/>
+                        </div>
+                        <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5">
+                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0bpEo4yX7KmdAx507Zd9034wfqdCPBRe1ddUPOqJeqGkOfCLa5DGyNy3HSqIA0cxPX7HBWeVx_3VetTNk6WODfFIS97JWYBqoXYG-4Td-k87cZISjCE1UaKBQrqfnDczfhjIQkkt1ggJ_ZNcbbbbGl-jXufu7xqXKWbNOhM7EsiUDuaHoTj5ArD7RF_ioqF9xPhY6SqO9GOcG80KasfS1Pr_mHMlBh3E8_9LhmY9Ud716Ou-YEvg2ImBv11qK-f_rfdO0x0lamw"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confessional Preview & Video Button -->
+        <div class="py-section-gap px-margin-mobile md:px-margin-desktop bg-[#0C0E14] text-center flex flex-col items-center">
+            <h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">Leave Your Confession</h3>
+            <p class="font-body-lg text-body-lg text-muted-echo max-w-xl mb-12">Submit an anonymous thought to the Whispering Void, or enter the crypt to hear the echoes.</p>
+            <div class="flex gap-4">
+                <a href="#" data-target="void-section" class="btn-primary-glass px-8 py-3 rounded-lg font-label-md text-label-md uppercase tracking-wider">Open Whispering Void</a>
+                <a href="https://youtube.com/watch?v=leCdmsL3d_w" target="_blank" class="px-8 py-3 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 inline-flex items-center gap-3 font-label-md text-label-md transition-all">
+                    <span class="material-symbols-outlined text-red-500 animate-pulse">play_circle</span> WATCH VIDEO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. PLAYER SECTION (The Lyrical Crypt) -->
+    <section id="player-section" class="section-wrapper hidden relative overflow-hidden">
+        <!-- Volumetric Background glows -->
+        <div class="absolute top-[20%] left-[-10%] w-[50vw] h-[50vh] bg-cold-indigo opacity-35 blur-[150px] rounded-full pointer-events-none z-0 ambient-glow-drift"></div>
+        <div class="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vh] bg-burnt-crimson opacity-15 blur-[150px] rounded-full pointer-events-none z-0 ambient-glow-drift"></div>
+        
+        <main class="relative z-10 pt-[140px] px-margin-mobile md:px-margin-desktop pb-section-gap min-h-screen flex flex-col xl:flex-row gap-gutter">
+            <!-- Left Column: Player Deck -->
+            <div class="w-full xl:w-5/12 flex flex-col items-center justify-center sticky top-[120px] h-fit">
+                <div class="glass-panel rounded-xl p-8 w-full max-w-md flex flex-col items-center gap-8 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-surface-container/20 to-transparent pointer-events-none"></div>
+                    <!-- Cassette visualizer -->
+                    <div id="cassette-container" class="relative w-64 h-64 flex items-center justify-center transition-all duration-700">
+                        <div class="absolute inset-0 rounded-full border border-white/5 animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute inset-4 rounded-full border border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <img alt="Industrial" class="w-48 h-48 rounded-full object-cover animate-spin-slow opacity-80 mix-blend-luminosity filter contrast-125 sepia-[.2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjgY2Hz5GkrEAJCGbMWNvIIVb8jj7Tlfbv1MQq2VYfygkEh_Wpo8klCvZnZ7s9KHqvJ3KVqHeR-dBUHhVbOGmM-obkWbwo8s6sXXpcP1N-LlE-egR5pZ2H3y8R6XzR1seVlf4cvHRv6vtSE1dX1uzxQbeRjK7qcuHJzhgitxjvEgDZup98ovbNl_0Ctf2dwb23GKiIvoOWYxTcJ8_9FkYj-zK2NmIjtUKNCB2nkEClwbK-f_-Ei-w8YtauOCn1zif4elQBZemVCQ"/>
+                        <div class="absolute inset-0 bg-void/20 rounded-full mix-blend-overlay"></div>
+                    </div>
+
+                    <!-- Cinematic Lyric visualizer (Fades in during female verse) -->
+                    <div id="cinematic-container" class="absolute w-64 h-64 flex flex-col items-center justify-center overflow-hidden rounded-lg bg-zinc-950/95 border border-white/10 shadow-2xl transition-all duration-700 opacity-0 scale-95 pointer-events-none z-20">
+                        <!-- Dynamic backgrounds -->
+                        <div id="cinematic-bg-glow" class="absolute inset-0 z-0 transition-all duration-1000"></div>
+                        
+                        <!-- Expressive Eye Visual (SVG) -->
+                        <div id="cinematic-eye-wrapper" class="relative z-10 w-32 h-20 transition-all duration-700 transform flex items-center justify-center">
+                            <svg class="w-full h-full text-on-surface-variant transition-colors duration-700" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                                <path id="eye-lid-path" d="M10 25 C30 5, 70 5, 90 25 C70 45, 30 45, 10 25 Z" fill="none" stroke="currentColor" stroke-width="2" class="transition-all duration-700"></path>
+                                <circle id="eye-pupil" cx="50" cy="25" r="10" fill="currentColor" class="transition-all duration-700"></circle>
+                                <circle id="eye-highlight" cx="54" cy="21" r="2.5" fill="#ffffff" class="transition-all duration-500"></circle>
+                            </svg>
+                        </div>
+                        
+                        <!-- Typography display -->
+                        <div id="cinematic-lyric-text" class="absolute inset-x-3 bottom-6 text-center font-headline-md text-[13px] leading-relaxed font-bold tracking-wider z-10 drop-shadow-md transition-all duration-500 uppercase h-12 flex items-center justify-center"></div>
+                    </div>
+                    <div class="text-center w-full z-10">
+                        <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Pukaar</h2>
+                        <p class="font-label-md text-label-md text-muted-echo tracking-widest uppercase">Aditya Billboard & Sarkar // Tape 01</p>
+                    </div>
+                    <!-- Progress track -->
+                    <div class="w-full flex flex-col gap-2 z-10">
+                        <div id="progress-bar-container" class="h-1 w-full bg-surface-container-highest rounded-md relative cursor-pointer">
+                            <div id="progress-bar" class="absolute top-0 left-0 h-full bg-friction rounded-l-md" style="width: 0%;"></div>
+                            <div id="progress-handle" class="absolute top-1/2 w-2 h-2 bg-call rounded-full animate-pulse-glow" style="left: 0%; transform: translate(-50%, -50%);"></div>
+                        </div>
+                        <div class="flex justify-between w-full font-label-sm text-label-sm text-muted-echo">
+                            <span id="current-time">00:00</span>
+                            <span id="total-time">03:10</span>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <div class="flex items-center justify-center z-10">
+                        <button id="main-play-btn" class="w-16 h-16 rounded-xl glass-panel flex items-center justify-center text-sunset-gold hover:shadow-[0_0_20px_rgba(242,176,53,0.2)] active:scale-95 transition-all">
+                            <span id="play-btn-icon" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 40px;">play_arrow</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Lyrics Scroll & Annotation Sidebar -->
+            <div class="w-full xl:w-7/12 flex gap-8 relative mt-16 xl:mt-0 h-[716px]">
+                <div id="lyrics-scroll-parent" class="flex-1 overflow-y-auto lyrics-scroll pr-8 pb-32 pt-16">
+                    <div class="flex flex-col gap-5 md:gap-10 font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface-variant" id="lyrics-container">
+                        <p class="lyric-line cursor-pointer active-lyric italic opacity-40 text-sm font-light tracking-[0.2em]" data-time="0" data-title="Intro" data-text="Stylized Title Card: पुकार ('Sarkar' / Aditya Billboard) appears over burning smoke. Beat enters.">
+                            [Intro Instrumental]
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="12" data-title="The Call" data-text="A repetitive plea representing the 'Pukaar'—the core cry for presence in the industrial void.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="15" data-title="The Echo" data-text="The echo of the call, emphasizing desperation. A plea against loneliness.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="18" data-title="The Attachment" data-text="Expressing the emotional dependence on the partner; the heart refuses to settle without them.">
+                            Bina tere dil Laage na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="22" data-title="Confirmation" data-text="A sincere affirmation of feelings. Sahi mein—truly, without doubt.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="24" data-title="Echoed Truth" data-text="Reiterating the truth of the emotional state, building vulnerability.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="25" data-title="Returning Plea" data-text="The plea returns, showing the cyclical nature of longing.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="28" data-title="Desperation" data-text="A desperate cycle. Calling out repeatedly to fill the quiet voids.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="32" data-title="Silence of Void" data-text="Silence becomes too heavy to bear, pressing against the late-night void.">
+                            Khamoshi teri Bhaaye na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="35" data-title="The Transmission" data-text="The song serves as a vessel. If you won't listen, at least read the words.">
+                            Tu padh le, ya sun le geet mere
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="40" data-title="Fading Habit" data-text="Old routines fade, but the phantom memory of meeting remains.">
+                            Tujh se milne ki jo meri aadat gayi hai
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="45" data-title="Uncharted Territory" data-text="First time feeling this level of vulnerability and displacement.">
+                            pehli dafa hua mujhe aise
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8 italic opacity-40 text-sm font-light tracking-[0.2em]" data-time="50" data-title="The Shift" data-text="Visual smoke transition into deep purple cosmic backdrops. The rhythm shifts gears.">
+                            [Transition: Beat switches, smoke rising]
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="53" data-title="Unspoken Words" data-text="The difficulty of articulating internal suffocation and heartbreak.">
+                            kaise kahu?
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="54" data-title="Suffocation" data-text="Ghutan—the literal feeling of choking, building pressure like the weight of silence.">
+                            ghut ta main hoon
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="56" data-title="Failing Connection" data-text="An honest admission: love is no longer taking root despite trying.">
+                            Sang tere Ishq na laage
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="59" data-title="Friction of Time" data-text="A mismatch of priorities. One values time, the other squanders it.">
+                            Tu na samjhe Samay ki keemat
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="64" data-title="Alternate Refuge" data-text="A new attraction or distraction calls, offering an escape from the pain.">
+                            nayi waali mujhe Bulati hai, paas apne
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="69" data-title="The Contrast" data-text="Comparing the new shelter's warmth to the old partner's coldness.">
+                            dil ke Kareeb wo rakhti hai
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="72" data-title="Lingering Ghost" data-text="The ghost of the ex. Even in a new relationship, the old memories remain.">
+                            uski Harqat mein tu kyun hai?
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="77" data-title="Open Threshold" data-text="An open invitation. The door remains unlocked, despite the betrayal.">
+                            aana Chahegi to aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="81" data-title="The Returning Cry" data-text="The chorus re-enters, highlighting the endless loop of calling out.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="83" data-title="Desperate Chorus" data-text="A plea for physical presence to break the isolation.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="84" data-title="Incompleteness" data-text="A feeling of being hollow, returning to the core emotional dependency.">
+                            Bina tere dil Laage na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="87" data-title="Vulnerability" data-text="Reaffirming the raw truth of pain and attachment.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="88" data-title="Realism" data-text="No fabrication, just raw emotion laid bare in Hinglish.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="91" data-title="The Call Echoes" data-text="The plea reverberates, bouncing off the valley walls.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="93" data-title="Persistence" data-text="Continuing to call out, refusing to let the connection die.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="97" data-title="Heavy Silence" data-text="The partner's silence is deafening, filling the empty room.">
+                            Khamoshi teri Bhaaye na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="100" data-title="Last Hope" data-text="The final appeal for communication through the art itself.">
+                            Tu padh le, ya sun le geet mere
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8 italic opacity-40 text-sm font-light tracking-[0.2em]" data-time="105" data-title="Cosmic Bridge" data-text="Reflective instrumental bridge. The camera pans over close-ups of eyes and smoke.">
+                            [Guitar Solo Bridge]
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="118" data-title="Enduring Desire" data-text="The stubborn persistence of longing, surviving betrayal.">
+                            Tujh se milne ki chaahat ab bhi hai
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="123" data-title="Rejection" data-text="Pleading against cold words of abandonment.">
+                            aise na bolo mujhe mere,
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="125" data-title="The Departure" data-text="The partner's voice breaks through: 'I cannot stay with you anymore'.">
+                            Tere sang Reh na paungi ab
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="129" data-title="The Release" data-text="Asking for permission to leave, repeating 'Jaane de' for emphasis.">
+                            Tu mujhe Jaane de*2 piya re
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="132" data-title="The Betrayal" data-text="Dhokha—the sharp sting of deceit, breaking the foundation.">
+                            Tumne diya Dhokha mujhe
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="135" data-title="Left Alone" data-text="Feeling abandoned and unwed, returned to single isolation.">
+                            Lagta rahoon Kuwari
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="138" data-title="Purity" data-text="Paak—pure and holy devotion. The intention was clean from the start.">
+                            Paak mera Dil tha tere liye
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="143" data-title="Waiting in Vain" data-text="Sitting in memories, hoping for a return that won't happen.">
+                            teri yaadon mein Baithi rahi
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="147" data-title="Hoped Reconnection" data-text="Believing they would hold hands again, keeping the loop alive.">
+                            ke phir se tu Thamega
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="150" data-title="Distraction" data-text="Aaroun (airon)—the ex's heart went to others, distracted by strangers.">
+                            aaroun pe tera Mann bha gaya
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="153" data-title="Possession" data-text="A nostalgic claim: 'You used to be mine'.">
+                            tu mera tha
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="155" data-title="Fading Possession" data-text="Repeating the claim as it slips away into memory.">
+                            Tu mera tha
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="157" data-title="Cycle Resets" data-text="The final return of the chorus. The tape loop resets.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="159" data-title="The Final Pukaar" data-text="Crying out one last time as the track begins to wind down.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="163" data-title="The Empty Heart" data-text="The core truth remains: the heart is lost without the other.">
+                            Bina tere dil Laage na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="167" data-title="Final Truth" data-text="The absolute reality of the isolation, confirmed.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="168" data-title="Drifting Echo" data-text="Fading confirmation, matching the visual of drifting echoes.">
+                            Haan sahi mein
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8" data-time="170" data-title="Fading Echo" data-text="The voice grows faint, sinking into static.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="172" data-title="The Last Cry" data-text="The final plea, barely audible over the guitar static.">
+                            Pukaaru jab bhi Aajana
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="176" data-title="Ultimate Silence" data-text="The silence wins. The call goes unanswered.">
+                            Khamoshi teri Bhaaye na
+                        </p>
+                        <p class="lyric-line cursor-pointer" data-time="180" data-title="Fading Transmission" data-text="The song's transmission dissolves into the void.">
+                            Tu padh le, ya sun le geet mere
+                        </p>
+                        <p class="lyric-line cursor-pointer mt-8 italic opacity-40 text-sm font-light tracking-[0.2em]" data-time="186" data-title="Dissolution" data-text="Final Sarkar/Aditya Billboard logo card as static fades to absolute silence.">
+                            [Fade Out]
+                        </p>
+                    </div>
+                </div>
+                <!-- Interactive Annotation Card -->
+                <div class="hidden xl:flex w-80 glass-panel rounded-lg p-6 flex-col gap-4 absolute right-0 top-1/4 opacity-0 transition-all duration-500 pointer-events-none" id="annotation-card">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-1 h-4 bg-sunset-gold"></span>
+                        <span class="font-label-sm text-label-sm text-sunset-gold tracking-widest uppercase">Artist Note</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface" id="annotation-title">The Spark</h3>
+                    <p class="font-body-md text-body-md text-muted-echo leading-relaxed" id="annotation-text">
+                        Hover over highlighted lyric lines to view Ranchi valley commentary.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- 3. THE CALL (Interactive Signals & Constellations) -->
+    <section id="chronicles-section" class="section-wrapper hidden relative overflow-hidden min-h-screen">
+        <!-- Atmospheric background glow -->
+        <div id="installation-bg-glow" class="absolute inset-0 z-0 transition-all duration-1000 bg-void"></div>
+        <!-- Interactive Ember Canvas for visual installation -->
+        <div id="installation-ember-container" class="absolute inset-0 pointer-events-none z-10 overflow-hidden"></div>
+
+        <main class="relative z-20 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col min-h-screen justify-between">
+            <!-- Header -->
+            <header class="mb-12">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-4 bg-sunset-gold"></span>
+                    <span class="font-label-sm text-label-sm text-sunset-gold tracking-widest uppercase">[Installation // Echoes of Pukaar]</span>
+                </div>
+                <h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-[0.05em] leading-tight ml-[-8px]">
+                    Echoes of Realization
+                </h1>
+                <p class="font-body-lg text-body-lg text-muted-echo mt-4 max-w-2xl border-l border-white/10 pl-6 leading-relaxed">
+                    An interactive sonic gallery mapping the emotional arc of the female response. Click any phase to synchronize the installation's atmosphere with the song's verse.
+                </p>
+            </header>
+
+            <!-- Main Installation Display Box -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
+                <!-- Left Panel: The Projected Installation (The Eye & Lyrics) -->
+                <div class="lg:col-span-8 flex flex-col">
+                    <div id="installation-display" class="glass-card rounded-xl p-8 md:p-12 flex-grow flex flex-col items-center justify-between min-h-[500px] relative overflow-hidden transition-all duration-1000">
+                        <!-- Glass highlight -->
+                        <div class="absolute inset-0 border border-white/10 rounded-xl pointer-events-none z-20"></div>
+                        <!-- Internal glow -->
+                        <div id="installation-internal-glow" class="absolute inset-0 bg-radial-gradient opacity-40 blur-[80px] pointer-events-none transition-all duration-1000"></div>
+
+                        <!-- Top status -->
+                        <div class="w-full flex justify-between items-center z-10 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-6">
+                            <span id="installation-phase-num">[Phase 01 // Longing]</span>
+                            <span id="installation-sync-status" class="text-sunset-gold animate-pulse">• Audio Emitter Synced</span>
+                        </div>
+
+                        <!-- Center piece: The Expressive Eye -->
+                        <div id="installation-eye-wrapper" class="relative z-10 w-64 h-40 transition-all duration-700 transform flex items-center justify-center">
+                            <svg id="installation-eye-svg" class="w-full h-full text-sunset-gold/60 transition-colors duration-700" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                                <path id="installation-eye-lid" d="M10 25 C30 5, 70 5, 90 25 C70 45, 30 45, 10 25 Z" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-all duration-700"></path>
+                                <circle id="installation-eye-pupil" cx="50" cy="25" r="10" fill="currentColor" class="transition-all duration-700"></circle>
+                                <circle id="installation-eye-highlight" cx="54" cy="21" r="2.5" fill="#ffffff" class="transition-all duration-500"></circle>
+                            </svg>
+                        </div>
+
+                        <!-- Big Lyric Typography -->
+                        <div class="w-full text-center z-10 mt-8 min-h-[80px] flex items-center justify-center px-4">
+                            <blockquote id="installation-lyrics" class="font-headline-md text-3xl md:text-4xl leading-snug tracking-wide transition-all duration-500 uppercase">
+                                Tujh se milne ki <span class="text-sunset-gold font-extrabold underline tracking-widest glow-call">chaahat</span> ab bhi hai
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Navigation / Control Panel (The 5 Interactive Phases) -->
+                <div class="lg:col-span-4 flex flex-col gap-4">
+                    <div class="font-label-sm text-label-sm text-muted-echo tracking-wider uppercase mb-2">Select Emotional State:</div>
+                    
+                    <!-- Phase 1: Longing -->
+                    <button onclick="activateInstallationPhase('longing')" id="phase-btn-longing" class="phase-btn active glass-panel border-sunset-gold text-sunset-gold p-5 rounded-lg text-left flex justify-between items-center transition-all duration-300">
+                        <div>
+                            <div class="font-label-sm text-xs tracking-wider opacity-60">PHASE 01 // 1:58</div>
+                            <div class="font-headline-sm text-lg font-bold uppercase tracking-wider mt-1">Longing</div>
+                        </div>
+                        <span class="material-symbols-outlined text-xl">looks_one</span>
+                    </button>
+
+                    <!-- Phase 2: Let Go -->
+                    <button onclick="activateInstallationPhase('letgo')" id="phase-btn-letgo" class="phase-btn glass-panel border-white/10 text-muted-echo p-5 rounded-lg text-left flex justify-between items-center transition-all duration-300">
+                        <div>
+                            <div class="font-label-sm text-xs tracking-wider opacity-60">PHASE 02 // 2:09</div>
+                            <div class="font-headline-sm text-lg font-bold uppercase tracking-wider mt-1">Let Go</div>
+                        </div>
+                        <span class="material-symbols-outlined text-xl">looks_two</span>
+                    </button>
+
+                    <!-- Phase 3: Betrayal -->
+                    <button onclick="activateInstallationPhase('betrayed')" id="phase-btn-betrayed" class="phase-btn glass-panel border-white/10 text-muted-echo p-5 rounded-lg text-left flex justify-between items-center transition-all duration-300">
+                        <div>
+                            <div class="font-label-sm text-xs tracking-wider opacity-60">PHASE 03 // 2:12</div>
+                            <div class="font-headline-sm text-lg font-bold uppercase tracking-wider mt-1">Betrayal</div>
+                        </div>
+                        <span class="material-symbols-outlined text-xl">looks_3</span>
+                    </button>
+
+                    <!-- Phase 4: Pure Love -->
+                    <button onclick="activateInstallationPhase('purelove')" id="phase-btn-purelove" class="phase-btn glass-panel border-white/10 text-muted-echo p-5 rounded-lg text-left flex justify-between items-center transition-all duration-300">
+                        <div>
+                            <div class="font-label-sm text-xs tracking-wider opacity-60">PHASE 04 // 2:18</div>
+                            <div class="font-headline-sm text-lg font-bold uppercase tracking-wider mt-1">Pure Love</div>
+                        </div>
+                        <span class="material-symbols-outlined text-xl">looks_4</span>
+                    </button>
+
+                    <!-- Phase 5: Grief -->
+                    <button onclick="activateInstallationPhase('grief')" id="phase-btn-grief" class="phase-btn glass-panel border-white/10 text-muted-echo p-5 rounded-lg text-left flex justify-between items-center transition-all duration-300">
+                        <div>
+                            <div class="font-label-sm text-xs tracking-wider opacity-60">PHASE 05 // 2:23</div>
+                            <div class="font-headline-sm text-lg font-bold uppercase tracking-wider mt-1">Grief & Truth</div>
+                        </div>
+                        <span class="material-symbols-outlined text-xl">looks_5</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </section>
+    <!-- 4. CONFESSIONAL SECTION (The Whispering Void) -->
+    <section id="void-section" class="section-wrapper hidden flex-grow flex flex-col relative overflow-hidden">
+        <!-- Volumetric Background glows -->
+        <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-cold-indigo opacity-30 blur-[150px] rounded-full pointer-events-none z-0 ambient-glow-drift"></div>
+        <div class="absolute top-[10%] right-[-10%] w-[45vw] h-[45vh] bg-burnt-crimson opacity-10 blur-[150px] rounded-full pointer-events-none z-0 ambient-glow-drift"></div>
+
+        <!-- Sub Navigation (Filters) -->
+        <div class="mt-32 px-margin-mobile md:px-margin-desktop flex gap-6 font-label-md text-label-md text-on-surface-variant border-b border-white/5 pb-4 select-none relative z-10">
+            <button id="filter-all" class="filter-btn text-primary border-b-2 border-primary pb-1 transition-all font-bold">All</button>
+            <button id="filter-silence" class="filter-btn hover:text-primary transition-all font-bold">Silence</button>
+            <button id="filter-friction" class="filter-btn hover:text-primary transition-all font-bold">Friction</button>
+            <button id="filter-call" class="filter-btn hover:text-primary transition-all font-bold">The Call</button>
+        </div>
+
+        <main class="flex-grow px-margin-mobile md:px-margin-desktop py-12 relative z-10">
+            <header class="mb-16">
+                <h1 class="font-headline-xl text-headline-xl text-on-surface mb-4">The Whispering Void</h1>
+                <p class="font-body-lg text-body-lg text-muted-echo max-w-2xl leading-relaxed">
+                    Echoes in the dark. Raw, unfiltered confessions floating in the atmospheric tension between silence and the call.
+                </p>
+            </header>
+
+            <!-- Confession grid -->
+            <div id="confessional-grid" class="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-gutter space-y-6 md:space-y-gutter">
+                <!-- Confessions loaded dynamically from backend -->
+            </div>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button id="open-confess-btn" class="fixed bottom-12 right-12 w-16 h-16 rounded-xl glass-card border-sunset-gold glow-call flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40 group">
+            <span class="material-symbols-outlined text-sunset-gold text-3xl group-hover:rotate-90 transition-transform duration-300">add</span>
+        </button>
+
+        <!-- Write Confessional Modal -->
+        <div class="hidden fixed inset-0 z-[1000] bg-void/80 backdrop-blur-3xl flex items-center justify-center p-6" id="confessional-modal">
+            <div class="w-full max-w-2xl glass-card rounded-2xl p-8 md:p-12 relative glow-friction">
+                <button id="close-modal-btn" class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8 uppercase">Speak to the Void</h2>
+                
+                <label class="block font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase mb-3">Choose Your State</label>
+                <div class="flex gap-4 mb-6">
+                    <button id="state-silence" class="state-select-btn px-4 py-2 border border-white/10 hover:border-sunset-gold rounded transition-all font-label-sm text-label-sm uppercase" data-state="silence">Silence</button>
+                    <button id="state-friction" class="state-select-btn px-4 py-2 border border-white/10 hover:border-sunset-gold rounded transition-all font-label-sm text-label-sm uppercase" data-state="friction">Friction</button>
+                    <button id="state-call" class="state-select-btn px-4 py-2 border border-white/10 hover:border-sunset-gold rounded transition-all font-label-sm text-label-sm uppercase" data-state="call">The Call</button>
+                </div>
+
+                <textarea id="modal-whisper-text" class="w-full bg-transparent border-b border-white/20 text-on-surface font-body-lg text-body-lg focus:outline-none focus:border-burnt-crimson focus:shadow-[0_4px_20px_-10px_rgba(217,78,52,0.5)] transition-all resize-none pb-2 h-32" placeholder="Whisper your silent pukaar here..."></textarea>
+                
+                <div class="mt-8 flex justify-end">
+                    <button id="release-confess-btn" class="glass-card px-8 py-3 rounded-lg text-on-surface font-label-md text-label-md hover:border-burnt-crimson hover:text-burnt-crimson transition-all uppercase font-bold tracking-widest">Release</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-white/5 relative z-10">
+        <div class="font-headline-md text-headline-md text-tertiary tracking-widest opacity-80">PUKAAR</div>
+        <div class="flex gap-6 md:gap-12 flex-wrap justify-center">
+            <a class="font-label-sm text-label-sm text-muted-echo hover:text-tertiary hover:tracking-widest transition-all duration-500 uppercase" href="#">Instagram</a>
+            <a class="font-label-sm text-label-sm text-muted-echo hover:text-tertiary hover:tracking-widest transition-all duration-500 uppercase" href="#">YouTube</a>
+            <a class="font-label-sm text-label-sm text-muted-echo hover:text-tertiary hover:tracking-widest transition-all duration-500 uppercase" href="#">Spotify</a>
+            <a class="font-label-sm text-label-sm text-muted-echo hover:text-tertiary hover:tracking-widest transition-all duration-500 uppercase" href="#">SoundCloud</a>
+        </div>
+        <div class="font-label-sm text-label-sm text-muted-echo mt-4 uppercase">
+            © 2024 THE AFTERMATH. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <!-- Audio FX & Single Page routing Logic -->
+    <script>
+        let audioCtx, audioSource, biquadFilter;
+        let isMuted = true;
+        let selectedConfessionStateVal = 'silence';
+        let currentSectionId = 'home-section';
+
+        // Centralized Transition Config (durations in ms, audio sweeps in seconds)
+        const TRANSITION_CONFIG = {
+            warpOutDuration: 500,       // Duration of the displacement warp animation (outward)
+            fadeOutDelay: 100,          // Delay before adding the fade-out class to current section
+            voidPauseDuration: 550,     // Total pause time in the dark void before swapping DOM views
+            audioMuffleDuration: 0.5,   // Time in seconds to muffle the lowpass filter down to 300Hz
+            revealDelay: 200,           // Wait time in the void before starting the target section reveal
+            warpInDuration: 600,        // Duration of the displacement warp animation (inward)
+            audioUnmuffleDuration: 0.7, // Time in seconds to sweep the lowpass filter back to clear
+            fadeInCleanDelay: 800       // Wait time before cleaning up the fade-in utility classes
+        };
+
+        let activeIndex = -1;
+        let isHoveringLyrics = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set first page navigation trigger
+            window.addEventListener('click', () => {
+                initializeAudioSystem();
+            }, { once: true });
+
+            const audio = document.getElementById('bg-audio');
+
+            // Setup Lyrical Crypt hover sidebar notes
+            const lyricLines = document.querySelectorAll('.lyric-line');
+            const annotationCard = document.getElementById('annotation-card');
+            const annotationTitle = document.getElementById('annotation-title');
+            const annotationText = document.getElementById('annotation-text');
+
+            let currentActiveLyric = document.querySelector('.lyric-line.active-lyric');
+
+            function updateAnnotation(line) {
+                if (!line) {
+                    annotationCard.style.opacity = '0';
+                    return;
+                }
+                const title = line.getAttribute('data-title');
+                const text = line.getAttribute('data-text');
+                if (title && text) {
+                    annotationTitle.innerText = title;
+                    annotationText.innerText = text;
+                    annotationCard.style.opacity = '1';
+                } else {
+                    annotationCard.style.opacity = '0';
+                }
+            }
+
+            // Set initial state for annotation
+            if (currentActiveLyric) {
+                updateAnnotation(currentActiveLyric);
+            }
+
+            lyricLines.forEach(line => {
+                line.addEventListener('mouseenter', () => {
+                    lyricLines.forEach(l => l.classList.remove('active-lyric'));
+                    line.classList.add('active-lyric');
+                    updateAnnotation(line);
+                });
+
+                line.addEventListener('mouseleave', () => {
+                    lyricLines.forEach(l => l.classList.remove('active-lyric'));
+                    restoreActiveLyric();
+                });
+
+                line.addEventListener('click', () => {
+                    const time = parseFloat(line.getAttribute('data-time'));
+                    if (!isNaN(time) && audio) {
+                        audio.currentTime = time;
+                        // Start playing if paused
+                        if (audio.paused) {
+                            togglePlayState();
+                        }
+                    }
+                });
+            });
+
+            // Suspend automatic highlight/scroll updates on hover
+            const lyricsContainer = document.getElementById('lyrics-container');
+            if (lyricsContainer) {
+                lyricsContainer.addEventListener('mouseenter', () => {
+                    isHoveringLyrics = true;
+                });
+                lyricsContainer.addEventListener('mouseleave', () => {
+                    isHoveringLyrics = false;
+                    restoreActiveLyric();
+                });
+            }
+
+            function restoreActiveLyric() {
+                lyricLines.forEach(l => l.classList.remove('active-lyric'));
+                if (activeIndex !== -1) {
+                    const activeLine = lyricLines[activeIndex];
+                    activeLine.classList.add('active-lyric');
+                    currentActiveLyric = activeLine;
+                    updateAnnotation(activeLine);
+                } else if (currentActiveLyric) {
+                    currentActiveLyric.classList.add('active-lyric');
+                    updateAnnotation(currentActiveLyric);
+                } else {
+                    annotationCard.style.opacity = '0';
+                }
+            }
+
+            // Audio Player Controls & Seekbar Sync
+            const SONG_DURATION = 190; // Virtual song duration capped at 3:10 to match official zine transcript
+
+            if (audio) {
+                const totalTimeSpan = document.getElementById('total-time');
+                if (totalTimeSpan) totalTimeSpan.innerText = formatTime(SONG_DURATION);
+
+                audio.addEventListener('timeupdate', () => {
+                    const currentTimeSpan = document.getElementById('current-time');
+                    const totalTimeSpan = document.getElementById('total-time');
+                    const progressBar = document.getElementById('progress-bar');
+                    const progressHandle = document.getElementById('progress-handle');
+
+                    // If audio exceeds virtual duration, loop it back to start
+                    if (audio.currentTime > SONG_DURATION) {
+                        audio.currentTime = 0;
+                    }
+
+                    if (currentTimeSpan) currentTimeSpan.innerText = formatTime(audio.currentTime);
+                    if (totalTimeSpan) totalTimeSpan.innerText = formatTime(SONG_DURATION);
+
+                    const percent = (audio.currentTime / SONG_DURATION) * 100;
+                    if (progressBar) progressBar.style.width = `${percent}%`;
+                    if (progressHandle) progressHandle.style.left = `${percent}%`;
+
+                    syncLyrics(audio.currentTime);
+                    syncCinematicLyricSequence(audio.currentTime);
+                    syncInstallationSequence(audio.currentTime);
+                });
+            }
+
+            // Seeking on Progress bar click
+            const progressContainer = document.getElementById('progress-bar-container');
+            if (progressContainer) {
+                progressContainer.addEventListener('click', (e) => {
+                    if (!audio) return;
+                    const rect = progressContainer.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const percent = clickX / rect.width;
+                    audio.currentTime = percent * SONG_DURATION; // Limit virtual song duration to 190s (3:10)
+                });
+            }
+
+            // Formatting helper for mm:ss
+            function formatTime(seconds) {
+                if (isNaN(seconds) || seconds === Infinity) return "00:00";
+                const m = Math.floor(seconds / 60);
+                const s = Math.floor(seconds % 60);
+                return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
+
+            // Syncing lyrics helper
+            function syncLyrics(time) {
+                let currentLineIndex = -1;
+                for (let i = 0; i < lyricLines.length; i++) {
+                    const lineTime = parseFloat(lyricLines[i].getAttribute('data-time'));
+                    if (time >= lineTime) {
+                        currentLineIndex = i;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (currentLineIndex !== -1 && currentLineIndex !== activeIndex) {
+                    activeIndex = currentLineIndex;
+                    const activeLine = lyricLines[currentLineIndex];
+                    
+                    if (!isHoveringLyrics) {
+                        lyricLines.forEach(l => l.classList.remove('active-lyric'));
+                        activeLine.classList.add('active-lyric');
+                        currentActiveLyric = activeLine;
+                        updateAnnotation(activeLine);
+                        
+                        // Scroll active lyric to center
+                        const parent = document.getElementById('lyrics-scroll-parent');
+                        if (parent) {
+                            const scrollOffset = activeLine.offsetTop - parent.offsetTop - (parent.clientHeight / 2) + (activeLine.clientHeight / 2);
+                            parent.scrollTo({
+                                top: scrollOffset,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Set up Confessional Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.className = 'filter-btn hover:text-primary transition-all font-bold';
+                    });
+                    btn.className = 'filter-btn text-primary border-b-2 border-primary pb-1 transition-all font-bold';
+
+                    const filterValue = btn.id.replace('filter-', '');
+                    const cards = document.querySelectorAll('.confessional-card');
+                    cards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-mood') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 500);
+                        }
+                    });
+                });
+            });
+
+            // Centralized Event Listeners for Navigating sections
+            document.querySelectorAll('[data-target]').forEach(elem => {
+                elem.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = elem.getAttribute('data-target');
+                    if (target) {
+                        navigateToSection(target);
+                        // If element has data-autoplay="true" and target is player-section, start playback
+                        if (elem.getAttribute('data-autoplay') === 'true' && target === 'player-section') {
+                            if (audio && audio.paused) {
+                                // Delay slightly to align with the displacement transition
+                                setTimeout(() => {
+                                    if (audio.paused) {
+                                        togglePlayState();
+                                    }
+                                }, 600);
+                            }
+                        }
+                    }
+                    if (elem.hasAttribute('data-close-menu')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Audio control trigger
+            document.getElementById('audio-control-btn')?.addEventListener('click', toggleAudio);
+
+            // Mobile menu trigger
+            document.getElementById('mobile-menu-trigger')?.addEventListener('click', toggleMobileMenu);
+
+
+            // Main player play button click
+            document.getElementById('main-play-btn')?.addEventListener('click', togglePlayState);
+
+            // Open confession modal click
+            document.getElementById('open-confess-btn')?.addEventListener('click', openConfessionalModal);
+
+            // Close confession modal click
+            document.getElementById('close-modal-btn')?.addEventListener('click', closeConfessionalModal);
+
+            // Select confession state button clicks
+            document.querySelectorAll('.state-select-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const state = btn.getAttribute('data-state');
+                    if (state) {
+                        selectConfessionState(state);
+                    }
+                });
+            });
+
+            // Submit confession release click
+            document.getElementById('release-confess-btn')?.addEventListener('click', submitModalConfession);
+
+            // Default state selection for writing confessions
+            selectConfessionState('silence');
+
+            // Load confessions dynamically from the backend
+            if (typeof loadConfessions === 'function') {
+                loadConfessions();
+            }
+        });
+
+        // Initialize Audio context on first click
+        function initializeAudioSystem() {
+            if (audioCtx) return;
+            const audio = document.getElementById('bg-audio');
+            if (!audio) return;
+
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                audioSource = audioCtx.createMediaElementSource(audio);
+                biquadFilter = audioCtx.createBiquadFilter();
+
+                // Start filter wide open
+                biquadFilter.type = 'lowpass';
+                biquadFilter.frequency.setValueAtTime(22000, audioCtx.currentTime);
+
+                audioSource.connect(biquadFilter);
+                biquadFilter.connect(audioCtx.destination);
+            } catch (e) {
+                console.error("Web Audio API not supported or blocked", e);
+            }
+        }
+
+        // Toggle Audio on/off
+        function toggleAudio() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('audio-icon');
+            const status = document.getElementById('audio-status');
+            const playIcon = document.getElementById('play-btn-icon');
+            const storyPlayIcon = document.getElementById('story-play-icon');
+
+            if (!audio) return;
+
+            if (isMuted) {
+                audio.play();
+                isMuted = false;
+                trackPlaying = true;
+                if (icon) icon.innerText = 'volume_up';
+                if (status) status.innerText = '[Ambient Playing]';
+                if (playIcon) playIcon.innerText = 'pause';
+                if (storyPlayIcon) storyPlayIcon.innerText = 'pause';
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            } else {
+                audio.pause();
+                isMuted = true;
+                trackPlaying = false;
+                if (icon) icon.innerText = 'volume_off';
+                if (status) status.innerText = '[Music Muted]';
+                if (playIcon) playIcon.innerText = 'play_arrow';
+                if (storyPlayIcon) storyPlayIcon.innerText = 'play_arrow';
+            }
+        }
+
+        // Toggle Player Deck Play/Pause Icons
+        let trackPlaying = false;
+        function togglePlayState() {
+            const audio = document.getElementById('bg-audio');
+            const playIcon = document.getElementById('play-btn-icon');
+            const storyPlayIcon = document.getElementById('story-play-icon');
+            
+            if (!audio) return;
+
+            if (audio.paused) {
+                audio.play();
+                trackPlaying = true;
+                if (playIcon) playIcon.innerText = 'pause';
+                if (storyPlayIcon) storyPlayIcon.innerText = 'pause';
+                
+                isMuted = false;
+                const icon = document.getElementById('audio-icon');
+                const status = document.getElementById('audio-status');
+                if (icon) icon.innerText = 'volume_up';
+                if (status) status.innerText = '[Ambient Playing]';
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            } else {
+                audio.pause();
+                trackPlaying = false;
+                if (playIcon) playIcon.innerText = 'play_arrow';
+                if (storyPlayIcon) storyPlayIcon.innerText = 'play_arrow';
+                
+                isMuted = true;
+                const icon = document.getElementById('audio-icon');
+                const status = document.getElementById('audio-status');
+                if (icon) icon.innerText = 'volume_off';
+                if (status) status.innerText = '[Music Muted]';
+            }
+        }
+
+
+
+        // Floating Ember Particles Spawner
+        let emberInterval = null;
+        function startEmberSpawning() {
+            const container = document.getElementById('ember-particle-container');
+            if (!container) return;
+            
+            container.innerHTML = ''; // Reset
+            
+            emberInterval = setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'ember-particle absolute rounded-full pointer-events-none';
+                
+                // Random size: 3px to 8px
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Position randomly at bottom
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = '100%';
+                
+                // Colors representing Ranchi's industrial fires: mix of gold and burnt crimson
+                const colors = ['#F2B035', '#D94E34', '#FF5733', '#FFC300'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                particle.style.boxShadow = `0 0 ${size * 2.5}px ${color}`;
+                particle.style.opacity = '0';
+                particle.style.filter = `blur(${Math.random() * 1.5}px)`;
+                
+                container.appendChild(particle);
+                
+                // Animation settings
+                const duration = Math.random() * 1800 + 1200; // 1.2s to 3s
+                const drift = (Math.random() - 0.5) * 160; // -80px to 80px drift
+                
+                const animation = particle.animate([
+                    { transform: 'translateY(0) translateX(0) scale(0.6)', opacity: 0 },
+                    { opacity: 0.9, offset: 0.2 },
+                    { opacity: 0.9, offset: 0.8 },
+                    { transform: `translateY(-110vh) translateX(${drift}px) scale(1.4)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)',
+                    fill: 'forwards'
+                });
+                
+                animation.onfinish = () => particle.remove();
+            }, 60);
+        }
+
+        function stopEmberSpawning() {
+            if (emberInterval) {
+                clearInterval(emberInterval);
+                emberInterval = null;
+            }
+            const container = document.getElementById('ember-particle-container');
+            if (container) {
+                Array.from(container.children).forEach(p => {
+                    p.style.transition = 'opacity 0.4s ease';
+                    p.style.opacity = '0';
+                    setTimeout(() => p.remove(), 400);
+                });
+            }
+        }
+
+        // Custom easing curve animation for displacement scale
+        function animateDisplacement(start, end, duration, callback) {
+            const map = document.getElementById('displacement-map');
+            if (!map) {
+                if (callback) callback();
+                return;
+            }
+            
+            const startTime = performance.now();
+            
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out/in cubic
+                const easedProgress = progress < 0.5 
+                    ? 4 * progress * progress * progress 
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                const currentScale = start + (end - start) * easedProgress;
+                map.setAttribute('scale', currentScale);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    if (callback) callback();
+                }
+            }
+            
+            requestAnimationFrame(step);
+        }
+
+        // SPA View Switcher with Custom Static Threshold Transition
+        function navigateToSection(targetId) {
+            if (targetId === currentSectionId) return;
+
+            const threshold = document.getElementById('sonic-threshold');
+            const ember = document.getElementById('threshold-ember');
+            const status = document.getElementById('threshold-status');
+            const currentSection = document.getElementById(currentSectionId);
+            const targetSection = document.getElementById(targetId);
+
+            if (!targetSection) return;
+
+            // Update shared section state
+            currentSectionId = targetId;
+
+            // 1. Activate threshold veil & particles
+            threshold.classList.add('active');
+            threshold.style.opacity = '1';
+            threshold.style.pointerEvents = 'auto';
+            ember.style.opacity = '1';
+            ember.style.transform = 'scale(1)';
+            status.style.opacity = '1';
+            
+            startEmberSpawning();
+
+            // Sweep filter down to 300Hz (Low-pass)
+            if (audioCtx && biquadFilter) {
+                biquadFilter.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + TRANSITION_CONFIG.audioMuffleDuration);
+            }
+
+            // 2. Warp current section and fade out
+            if (currentSection) {
+                currentSection.classList.add('distort-active');
+                animateDisplacement(0, 80, TRANSITION_CONFIG.warpOutDuration);
+                setTimeout(() => {
+                    currentSection.classList.add('fade-out');
+                }, TRANSITION_CONFIG.fadeOutDelay);
+            }
+
+            // 3. Void Pause (Wait for warp and fade-out to finish)
+            setTimeout(() => {
+                if (currentSection) {
+                    currentSection.classList.add('hidden');
+                    currentSection.classList.remove('fade-out', 'distort-active');
+                }
+                
+                // Prepare target section with full distortion, then show it
+                targetSection.classList.add('distort-active');
+                const map = document.getElementById('displacement-map');
+                if (map) map.setAttribute('scale', '80');
+                
+                targetSection.classList.remove('hidden');
+                targetSection.classList.add('fade-in');
+                window.scrollTo(0, 0);
+
+                // Update navigation links highlight state
+                updateNavHighlight(targetId);
+
+                // If navigating to chronicles-section, initialize the active phase
+                if (targetId === 'chronicles-section') {
+                    const audio = document.getElementById('bg-audio');
+                    if (audio && !audio.paused && audio.currentTime >= 118 && audio.currentTime <= 156) {
+                        syncInstallationSequence(audio.currentTime);
+                    } else {
+                        activateInstallationPhase('longing', false);
+                    }
+                }
+
+                // 4. Reveal target section, resolve warp
+                setTimeout(() => {
+                    // Fade out veil
+                    threshold.classList.remove('active');
+                    threshold.style.opacity = '0';
+                    threshold.style.pointerEvents = 'none';
+                    ember.style.opacity = '0';
+                    ember.style.transform = 'scale(0.5)';
+                    status.style.opacity = '0';
+                    
+                    stopEmberSpawning();
+
+                    // Resolve displacement distortion on incoming section
+                    animateDisplacement(80, 0, TRANSITION_CONFIG.warpInDuration, () => {
+                        targetSection.classList.remove('distort-active');
+                    });
+
+                    // Sweep filter back to 22000Hz (Lifting lowpass)
+                    if (audioCtx && biquadFilter) {
+                        biquadFilter.frequency.exponentialRampToValueAtTime(22000, audioCtx.currentTime + TRANSITION_CONFIG.audioUnmuffleDuration);
+                    }
+
+                    setTimeout(() => {
+                        targetSection.classList.remove('fade-in');
+                    }, TRANSITION_CONFIG.fadeInCleanDelay);
+                }, TRANSITION_CONFIG.revealDelay);
+            }, TRANSITION_CONFIG.voidPauseDuration);
+        }
+
+        // Highlight Active Page link
+        function updateNavHighlight(targetId) {
+            const navMap = {
+                'home-section': 'nav-home',
+                'player-section': 'nav-player',
+                'chronicles-section': 'nav-chronicles',
+                'void-section': 'nav-void'
+            };
+
+            const activeId = navMap[targetId];
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.id === activeId) {
+                    link.className = 'nav-link text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md px-3 py-1 scale-95 transition-all';
+                } else {
+                    link.className = 'nav-link text-on-surface-variant font-medium hover:text-on-surface transition-colors font-label-md text-label-md hover:bg-white/5 px-3 py-1 rounded transition-all duration-300';
+                }
+            });
+
+            document.querySelectorAll('.nav-link-mobile').forEach(link => {
+                const target = link.getAttribute('data-target');
+                if (target === targetId) {
+                    link.className = 'nav-link-mobile font-headline-md text-headline-md text-primary font-bold text-center';
+                } else {
+                    link.className = 'nav-link-mobile font-headline-md text-headline-md text-on-surface-variant text-center';
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                icon.innerText = 'close';
+            } else {
+                drawer.classList.add('translate-x-full');
+                icon.innerText = 'menu';
+            }
+        }
+
+        // Confessional Modal Handling
+        // Open confession modal click
+        function openConfessionalModal() {
+            document.getElementById('confessional-modal').classList.remove('hidden');
+        }
+
+        function closeConfessionalModal() {
+            document.getElementById('confessional-modal').classList.add('hidden');
+            document.getElementById('modal-whisper-text').value = '';
+        }
+
+        function selectConfessionState(state) {
+            selectedConfessionStateVal = state;
+            document.querySelectorAll('.state-select-btn').forEach(btn => {
+                btn.className = 'state-select-btn px-4 py-2 border border-white/10 hover:border-sunset-gold rounded transition-all font-label-sm text-label-sm uppercase';
+            });
+
+            const activeBtn = document.getElementById(`state-${state}`);
+            if (activeBtn) {
+                if (state === 'silence') {
+                    activeBtn.className = 'state-select-btn px-4 py-2 border border-cold-indigo bg-cold-indigo text-white rounded transition-all font-label-sm text-label-sm uppercase';
+                } else if (state === 'friction') {
+                    activeBtn.className = 'state-select-btn px-4 py-2 border border-burnt-crimson bg-burnt-crimson text-white rounded transition-all font-label-sm text-label-sm uppercase';
+                } else if (state === 'call') {
+                    activeBtn.className = 'state-select-btn px-4 py-2 border border-sunset-gold bg-sunset-gold text-void rounded transition-all font-label-sm text-label-sm uppercase font-bold';
+                }
+            }
+        }
+
+        // Load confessions from the backend and render them
+        async function loadConfessions() {
+            try {
+                const response = await fetch('/api/confessions');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const confessions = await response.json();
+                renderConfessionsList(confessions);
+            } catch (err) {
+                console.error("Error loading confessions:", err);
+                const grid = document.getElementById('confessional-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-12 text-on-surface-variant font-body-lg">
+                            <span class="material-symbols-outlined text-4xl mb-2 opacity-50">wifi_off</span>
+                            <p>The void is silent. Unable to retrieve the whispers.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Render confession list dynamically
+        function renderConfessionsList(confessions) {
+            const grid = document.getElementById('confessional-grid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            confessions.forEach(c => {
+                const card = document.createElement('div');
+                const mood = c.mood.toLowerCase();
+                const stateLabel = mood === 'call' ? 'THE CALL' : mood.toUpperCase();
+                
+                let glowClass = 'glow-silence';
+                let iconMarkup = '';
+                
+                if (mood === 'friction') {
+                    glowClass = 'glow-friction';
+                    iconMarkup = '<span class="material-symbols-outlined text-[16px]">local_fire_department</span>';
+                } else if (mood === 'call') {
+                    glowClass = 'glow-call';
+                    iconMarkup = '<span class="material-symbols-outlined text-[16px]">call_made</span>';
+                } else {
+                    iconMarkup = '<span class="material-symbols-outlined text-[16px]">water_drop</span>';
+                }
+
+                let paddingClass = 'p-6 md:p-8';
+                card.className = `confessional-card glass-card ${glowClass} rounded-xl ${paddingClass} break-inside-avoid mb-6 transition-all duration-500 scale-95 opacity-0`;
+                card.setAttribute('data-mood', mood);
+                
+                let pClass = 'font-body-md text-body-md text-on-surface opacity-85 mb-6 leading-relaxed';
+                if (mood === 'call') {
+                    pClass = 'font-body-lg text-body-lg text-sunset-gold mb-6 leading-relaxed italic';
+                }
+
+                card.innerHTML = `
+                    <p class="${pClass}">"${c.text}"</p>
+                    <div class="flex justify-between items-center text-muted-echo">
+                        <span class="font-label-sm text-label-sm">${stateLabel}</span>
+                        ${iconMarkup}
+                    </div>
+                `;
+
+                grid.appendChild(card);
+
+                // Animate card entrance
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 50);
+            });
+
+            // Re-apply active filter to newly rendered cards
+            const activeFilterBtn = document.querySelector('.filter-btn.text-primary');
+            if (activeFilterBtn) {
+                const filterValue = activeFilterBtn.id.replace('filter-', '');
+                const cards = grid.querySelectorAll('.confessional-card');
+                cards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-mood') === filterValue) {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                    }
+                });
+            }
+        }
+
+        // Submit confession to the backend via POST API
+        async function submitModalConfession() {
+            const textarea = document.getElementById('modal-whisper-text');
+            const text = textarea.value.trim();
+            if (text === '') return;
+
+            const mood = selectedConfessionStateVal;
+
+            try {
+                const response = await fetch('/api/confessions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text, mood })
+                });
+
+                if (response.ok) {
+                    // Reset input and close the modal
+                    textarea.value = '';
+                    closeConfessionalModal();
+                    
+                    // Reload all confessions to ensure order and state are in sync
+                    await loadConfessions();
+                } else {
+                    console.error("Failed to submit confession:", response.statusText);
+                    alert("The void could not hear your whisper. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error submitting confession:", err);
+                alert("Error connecting to the void. Please try again.");
+            }
+        }
+
+        // Echoes of Realization Installation Controller
+        let lastInstallationPhase = "";
+        let installationEmberInterval = null;
+
+        function activateInstallationPhase(phase, jumpAudio = true) {
+            const bgGlow = document.getElementById('installation-bg-glow');
+            const internalGlow = document.getElementById('installation-internal-glow');
+            const eyeWrapper = document.getElementById('installation-eye-wrapper');
+            const eyeLid = document.getElementById('installation-eye-lid');
+            const eyePupil = document.getElementById('installation-eye-pupil');
+            const eyeHighlight = document.getElementById('installation-eye-highlight');
+            const lyricsBlock = document.getElementById('installation-lyrics');
+            const phaseNum = document.getElementById('installation-phase-num');
+
+            if (!bgGlow || !eyeWrapper || !eyeLid || !eyePupil || !eyeHighlight || !lyricsBlock || !phaseNum) return;
+
+            let bgStyle = "";
+            let internalGlowStyle = "";
+            let lidPath = "";
+            let pupilColor = "";
+            let pupilRadius = "10";
+            let eyeColorClass = "text-on-surface-variant";
+            let highlightOpacity = "1";
+            let lyricHtml = "";
+            let phaseTitle = "";
+            let shouldShiver = false;
+            let targetTime = 0;
+
+            switch(phase) {
+                case 'longing':
+                    phaseTitle = "[Phase 01 // Longing]";
+                    lyricHtml = 'Tujh se milne ki <span class="text-sunset-gold font-extrabold underline tracking-widest glow-call">chaahat</span> ab bhi hai';
+                    bgStyle = "radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(13, 14, 17, 1) 90%)";
+                    internalGlowStyle = "radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, transparent 70%)";
+                    lidPath = "M10 25 C30 5, 70 5, 90 25 C70 45, 30 45, 10 25 Z"; // Open wide
+                    pupilColor = "#F2B035"; // Sunset Gold
+                    eyeColorClass = "text-sunset-gold/80";
+                    targetTime = 118;
+                    break;
+                case 'letgo':
+                    phaseTitle = "[Phase 02 // Let Go]";
+                    lyricHtml = 'Tu mujhe <span class="text-white border-b border-white/30 tracking-[0.25em]">Jaane de</span> piya re';
+                    bgStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.3) 0%, rgba(13, 14, 17, 1) 90%)";
+                    internalGlowStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.5) 0%, transparent 70%)";
+                    lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                    pupilColor = "transparent";
+                    eyeColorClass = "text-on-surface-variant/30";
+                    highlightOpacity = "0";
+                    targetTime = 129;
+                    break;
+                case 'betrayed':
+                    phaseTitle = "[Phase 03 // Betrayal]";
+                    lyricHtml = '<span class="text-red-500 font-extrabold tracking-widest animate-pulse">Dhokha</span> tumne diya mujhe';
+                    bgStyle = "radial-gradient(circle, rgba(217, 78, 52, 0.35) 0%, rgba(13, 14, 17, 1) 85%)";
+                    internalGlowStyle = "radial-gradient(circle, rgba(217, 78, 52, 0.6) 0%, transparent 70%)";
+                    lidPath = "M10 25 C30 2, 70 2, 90 25 C70 48, 30 48, 10 25 Z"; // Shocked
+                    pupilColor = "#D94E34"; // Visceral crimson
+                    pupilRadius = "14";
+                    eyeColorClass = "text-burnt-crimson";
+                    shouldShiver = true;
+                    targetTime = 132;
+                    break;
+                case 'purelove':
+                    phaseTitle = "[Phase 04 // Pure Love]";
+                    lyricHtml = '<span class="text-sunset-gold font-semibold tracking-widest glow-call">Paak</span> mera Dil था tere liye';
+                    bgStyle = "radial-gradient(circle, rgba(242, 176, 53, 0.2) 0%, rgba(13, 14, 17, 1) 90%)";
+                    internalGlowStyle = "radial-gradient(circle, rgba(242, 176, 53, 0.4) 0%, transparent 70%)";
+                    lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                    pupilColor = "transparent";
+                    eyeColorClass = "text-sunset-gold/50";
+                    highlightOpacity = "0";
+                    targetTime = 143;
+                    break;
+                case 'grief':
+                    phaseTitle = "[Phase 05 // Grief & Truth]";
+                    lyricHtml = 'aaroun pe tera Mann bha gaya... <span class="opacity-50">tu mera था</span>';
+                    bgStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.15) 0%, rgba(13, 14, 17, 1) 95%)";
+                    internalGlowStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.3) 0%, transparent 70%)";
+                    lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                    pupilColor = "transparent";
+                    eyeColorClass = "text-on-surface-variant/20";
+                    highlightOpacity = "0";
+                    targetTime = 150;
+                    break;
+            }
+
+            if (lastInstallationPhase !== phase) {
+                lastInstallationPhase = phase;
+
+                // Update UI elements
+                phaseNum.innerText = phaseTitle;
+                lyricsBlock.innerHTML = lyricHtml;
+                bgGlow.style.background = bgStyle;
+                if (internalGlow) {
+                    internalGlow.style.background = internalGlowStyle;
+                }
+                eyeLid.setAttribute('d', lidPath);
+                eyePupil.setAttribute('fill', pupilColor);
+                eyePupil.setAttribute('r', pupilRadius);
+                eyeHighlight.setAttribute('opacity', highlightOpacity);
+
+                // Update active states on right panel buttons
+                document.querySelectorAll('#chronicles-section .phase-btn').forEach(btn => {
+                    btn.classList.remove('active', 'border-sunset-gold', 'text-sunset-gold');
+                    btn.classList.add('border-white/10', 'text-muted-echo');
+                });
+                const activeBtn = document.getElementById(`phase-btn-${phase}`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active', 'border-sunset-gold', 'text-sunset-gold');
+                    activeBtn.classList.remove('border-white/10', 'text-muted-echo');
+                }
+
+                // Eye shiver
+                eyeWrapper.className = "relative z-10 w-64 h-40 transition-all duration-700 transform flex items-center justify-center";
+                if (shouldShiver) {
+                    eyeWrapper.classList.add('animate-eye-shiver');
+                    // Tactile rumble on the display card itself
+                    const displayCard = document.getElementById('installation-display');
+                    if (displayCard) {
+                        displayCard.classList.remove('rumble-active');
+                        void displayCard.offsetWidth;
+                        displayCard.classList.add('rumble-active');
+                    }
+                }
+
+                // Eye color
+                const svg = document.getElementById('installation-eye-svg');
+                if (svg) {
+                    svg.className.baseVal = `w-full h-full transition-colors duration-700 ${eyeColorClass}`;
+                }
+
+                // Handle local embers for Betrayal phase
+                if (phase === 'betrayed') {
+                    startInstallationEmberSpawning();
+                    const mainWrapper = document.getElementById('chronicles-section');
+                    if (mainWrapper) {
+                        mainWrapper.classList.add('distort-active');
+                        animateDisplacement(0, 30, 400, () => {
+                            animateDisplacement(30, 3, 600);
+                        });
+                    }
+                } else {
+                    stopInstallationEmberSpawning();
+                    const mainWrapper = document.getElementById('chronicles-section');
+                    if (mainWrapper) {
+                        mainWrapper.classList.remove('distort-active');
+                    }
+                }
+            }
+
+            // Sync audio playback
+            if (jumpAudio) {
+                const audio = document.getElementById('bg-audio');
+                if (audio) {
+                    audio.currentTime = targetTime;
+                    if (audio.paused) {
+                        togglePlayState();
+                    }
+                }
+            }
+        }
+
+        // Real-time synchronization of the installation when audio is playing normally
+        function syncInstallationSequence(time) {
+            // Check if chronicles section is active
+            const chronicles = document.getElementById('chronicles-section');
+            if (!chronicles || chronicles.classList.contains('hidden')) return;
+
+            if (time >= 118 && time < 129) {
+                activateInstallationPhase('longing', false);
+            } else if (time >= 129 && time < 132) {
+                activateInstallationPhase('letgo', false);
+            } else if (time >= 132 && time < 143) {
+                activateInstallationPhase('betrayed', false);
+            } else if (time >= 143 && time < 150) {
+                activateInstallationPhase('purelove', false);
+            } else if (time >= 150 && time <= 156) {
+                activateInstallationPhase('grief', false);
+            }
+        }
+
+        // Local particles for Chronicles Section installation
+        function startInstallationEmberSpawning() {
+            const container = document.getElementById('installation-ember-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            installationEmberInterval = setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'ember-particle-inst absolute rounded-full pointer-events-none z-0';
+                
+                const size = Math.random() * 6 + 4; // 4px to 10px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = '100%';
+                
+                const colors = ['#F2B035', '#D94E34', '#FF5733', '#FFC300'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                particle.style.boxShadow = `0 0 ${size * 2.5}px ${color}`;
+                particle.style.opacity = '0';
+                particle.style.filter = `blur(${Math.random() * 1.5}px)`;
+                
+                container.appendChild(particle);
+                
+                const duration = Math.random() * 2000 + 1500; // 1.5s to 3.5s
+                const drift = (Math.random() - 0.5) * 200;
+                
+                const animation = particle.animate([
+                    { transform: 'translateY(0) translateX(0) scale(0.6)', opacity: 0 },
+                    { opacity: 0.9, offset: 0.2 },
+                    { opacity: 0.9, offset: 0.8 },
+                    { transform: `translateY(-110vh) translateX(${drift}px) scale(1.4)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)',
+                    fill: 'forwards'
+                });
+                
+                animation.onfinish = () => particle.remove();
+            }, 80);
+        }
+
+        function stopInstallationEmberSpawning() {
+            if (installationEmberInterval) {
+                clearInterval(installationEmberInterval);
+                installationEmberInterval = null;
+            }
+            const container = document.getElementById('installation-ember-container');
+            if (container) {
+                Array.from(container.children).forEach(p => {
+                    p.style.transition = 'opacity 0.5s ease';
+                    p.style.opacity = '0';
+                    setTimeout(() => p.remove(), 500);
+                });
+            }
+        }
+
+        // Cinematic Lyric Video Sequence controller for female verse (1:58 to 2:35)
+        let lastCinematicState = "";
+        function syncCinematicLyricSequence(time) {
+            const cassette = document.getElementById('cassette-container');
+            const cinematic = document.getElementById('cinematic-container');
+            if (!cassette || !cinematic) return;
+
+            // Verse is 1:58 (118s) to 2:35 (155s)
+            if (time >= 118 && time <= 155) {
+                if (cassette.style.opacity !== "0") {
+                    cassette.style.opacity = "0";
+                    cassette.style.transform = "scale(0.9) rotate(-10deg)";
+                    cassette.style.pointerEvents = "none";
+                    
+                    cinematic.style.opacity = "1";
+                    cinematic.style.transform = "scale(1)";
+                    cinematic.style.pointerEvents = "auto";
+                }
+                updateCinematicFrame(time);
+            } else {
+                if (cassette.style.opacity === "0") {
+                    cassette.style.opacity = "1";
+                    cassette.style.transform = "scale(1) rotate(0deg)";
+                    cassette.style.pointerEvents = "auto";
+                    
+                    cinematic.style.opacity = "0";
+                    cinematic.style.transform = "scale(0.95)";
+                    cinematic.style.pointerEvents = "none";
+                    lastCinematicState = "";
+                }
+            }
+        }
+
+        function updateCinematicFrame(time) {
+            const bgGlow = document.getElementById('cinematic-bg-glow');
+            const eyeWrapper = document.getElementById('cinematic-eye-wrapper');
+            const eyeLid = document.getElementById('eye-lid-path');
+            const eyePupil = document.getElementById('eye-pupil');
+            const eyeHighlight = document.getElementById('eye-highlight');
+            const lyricText = document.getElementById('cinematic-lyric-text');
+
+            if (!bgGlow || !eyeWrapper || !eyeLid || !eyePupil || !eyeHighlight || !lyricText) return;
+
+            let currentState = "";
+            let htmlText = "";
+            let bgGlowStyle = "";
+            let lidPath = "";
+            let pupilColor = "";
+            let pupilRadius = "10";
+            let eyeColorClass = "text-on-surface-variant";
+            let highlightOpacity = "1";
+            let shouldShiver = false;
+
+            if (time >= 118 && time < 125) {
+                // Stage 1: Longing (1:58 - 2:04)
+                currentState = "longing";
+                htmlText = 'Tujh se milne ki <span class="text-sunset-gold font-extrabold underline tracking-widest glow-call">chaahat</span> ab bhi hai';
+                bgGlowStyle = "radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(13, 14, 17, 1) 85%)";
+                lidPath = "M10 25 C30 5, 70 5, 90 25 C70 45, 30 45, 10 25 Z"; // Open wide
+                pupilColor = "#F2B035"; // Sunset Gold
+                eyeColorClass = "text-sunset-gold/60";
+            } else if (time >= 125 && time < 129) {
+                // Stage 2: Longing transition & Aise na bolo
+                currentState = "longing-trans";
+                htmlText = 'aise na bolo mujhe mere';
+                bgGlowStyle = "radial-gradient(circle, rgba(79, 70, 229, 0.3) 0%, rgba(13, 14, 17, 1) 85%)";
+                lidPath = "M10 25 C30 15, 70 15, 90 25 C70 35, 30 35, 10 25 Z"; // Squinting
+                pupilColor = "#bcc6e3";
+                eyeColorClass = "text-on-surface-variant/60";
+            } else if (time >= 129 && time < 132) {
+                // Stage 3: Release / Let Go (2:09 - 2:11)
+                currentState = "letgo";
+                htmlText = 'Tu mujhe <span class="text-white border-b border-white/30 tracking-[0.25em]">Jaane de</span> piya re';
+                bgGlowStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.5) 0%, rgba(13, 14, 17, 1) 90%)";
+                lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                pupilColor = "transparent";
+                eyeColorClass = "text-on-surface-variant/20";
+                highlightOpacity = "0";
+            } else if (time >= 132 && time < 138) {
+                // Stage 4: Betrayal (2:12 - 2:17)
+                currentState = "betrayed";
+                htmlText = '<span class="text-red-500 font-extrabold tracking-widest animate-pulse">Dhokha</span> tumne diya mujhe';
+                bgGlowStyle = "radial-gradient(circle, rgba(217, 78, 52, 0.7) 0%, rgba(13, 14, 17, 1) 80%)";
+                lidPath = "M10 25 C30 3, 70 3, 90 25 C70 47, 30 47, 10 25 Z"; // Very wide/shocked
+                pupilColor = "#D94E34"; // Visceral crimson
+                pupilRadius = "13"; // Dilated
+                eyeColorClass = "text-burnt-crimson";
+                shouldShiver = true;
+            } else if (time >= 138 && time < 143) {
+                // Stage 4b: Kuwari
+                currentState = "betrayed-kuwari";
+                htmlText = 'Lagta rahoon Kuwari';
+                bgGlowStyle = "radial-gradient(circle, rgba(217, 78, 52, 0.4) 0%, rgba(13, 14, 17, 1) 85%)";
+                lidPath = "M10 25 C30 10, 70 10, 90 25 C70 40, 30 40, 10 25 Z";
+                pupilColor = "#D94E34";
+                pupilRadius = "11";
+                eyeColorClass = "text-burnt-crimson/70";
+                shouldShiver = true;
+            } else if (time >= 143 && time < 150) {
+                // Stage 5: Pure Love (2:18 - 2:22)
+                currentState = "purelove";
+                htmlText = '<span class="text-sunset-gold font-semibold tracking-widest glow-call">Paak</span> mera Dil था tere liye';
+                bgGlowStyle = "radial-gradient(circle, rgba(242, 176, 53, 0.35) 0%, rgba(13, 14, 17, 1) 85%)";
+                lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                pupilColor = "transparent";
+                eyeColorClass = "text-sunset-gold/40";
+                highlightOpacity = "0";
+            } else if (time >= 150 && time <= 155) {
+                // Stage 6: Grief / Fading (2:23 - 2:35)
+                currentState = "grief";
+                htmlText = 'aaroun pe tera Mann bha gaya... <span class="opacity-50">tu mera था</span>';
+                bgGlowStyle = "radial-gradient(circle, rgba(24, 34, 56, 0.25) 0%, rgba(13, 14, 17, 1) 90%)";
+                lidPath = "M10 25 C30 25, 70 25, 90 25 C70 25, 30 25, 10 25 Z"; // Closed
+                pupilColor = "transparent";
+                eyeColorClass = "text-on-surface-variant/10";
+                highlightOpacity = "0";
+            }
+
+            // Only update DOM if state has actually changed
+            if (currentState !== lastCinematicState) {
+                lastCinematicState = currentState;
+                
+                bgGlow.style.background = bgGlowStyle;
+                eyeLid.setAttribute('d', lidPath);
+                eyePupil.setAttribute('fill', pupilColor);
+                eyePupil.setAttribute('r', pupilRadius);
+                eyeHighlight.setAttribute('opacity', highlightOpacity);
+                
+                // Clear existing color classes and apply current
+                eyeWrapper.className = "relative z-10 w-32 h-20 transition-all duration-700 transform flex items-center justify-center";
+                if (shouldShiver) {
+                    eyeWrapper.classList.add('animate-eye-shiver');
+                }
+                
+                // Update SVG stroke colors
+                const svg = eyeWrapper.querySelector('svg');
+                if (svg) {
+                    svg.className.baseVal = `w-full h-full transition-colors duration-700 ${eyeColorClass}`;
+                }
+
+                // Spawning sparks during Betrayal fire phase
+                if (currentState.startsWith("betrayed")) {
+                    startEmberSpawning();
+                    // Warp screen displacement mapping a bit for friction
+                    const mainWrapper = document.getElementById('player-section');
+                    if (mainWrapper) {
+                        mainWrapper.classList.add('distort-active');
+                        animateDisplacement(0, 20, 400, () => {
+                            animateDisplacement(20, 2, 600);
+                        });
+                    }
+                } else if (currentState === "letgo" || currentState === "purelove") {
+                    stopEmberSpawning();
+                    const mainWrapper = document.getElementById('player-section');
+                    if (mainWrapper) {
+                        mainWrapper.classList.remove('distort-active');
+                    }
+                }
+            }
+
+            // Update text dynamically as time passes
+            if (lyricText.innerHTML !== htmlText) {
+                lyricText.innerHTML = htmlText;
+            }
+        }
+    </script>
+</body>
+</html>
