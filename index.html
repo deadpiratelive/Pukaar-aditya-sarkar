@@ -960,6 +960,9 @@
             // Set first page navigation trigger
             window.addEventListener('click', () => {
                 initializeAudioSystem();
+                if (isMuted) {
+                    toggleAudio();
+                }
             }, { once: true });
 
             const audio = document.getElementById('bg-audio');
