@@ -443,7 +443,11 @@
                     <path d="M0 200C100 200 150 150 200 150C250 150 300 250 350 250C400 250 450 150 500 150C550 150 600 200 800 200" stroke="#D94E34" stroke-width="1"></path>
                 </svg>
             </div>
-            <h1 class="font-headline-xl text-headline-xl mb-6 tracking-tighter mix-blend-difference relative z-10 animate-headline-breathe">PUKAAR</h1>
+            <!-- Hero Title Images Fader -->
+            <div class="relative w-full max-w-2xl h-48 md:h-64 z-10 flex items-center justify-center mb-6">
+                <img id="hero-title-sarkar" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-100" src="pukaar_sarkar.png" alt="PUKAAR - Sarkar" />
+                <img id="hero-title-aditya" class="absolute w-full h-full object-contain transition-opacity duration-1000 opacity-0" src="pukaar_aditya.png" alt="PUKAAR - Aditya Billboard" />
+            </div>
             <p class="font-body-lg text-body-lg max-w-2xl mb-12 text-muted-echo relative z-10">Listen for the Call.</p>
             <a class="btn-primary-glass px-10 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest relative z-10" href="#" data-target="player-section" data-autoplay="true">
                 Enter the Noise
@@ -455,22 +459,18 @@
         <!-- Context Section: The Call -->
         <div class="py-section-gap px-margin-mobile md:px-margin-desktop bg-ash relative overflow-hidden" id="context">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                <!-- Cassette Mockup -->
+                <!-- Visualizer Preview Frame -->
                 <div class="relative flex justify-center">
-                    <div class="w-64 h-64 md:w-96 md:h-96 relative group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-black to-zinc-800 rounded-xl transform rotate-3 shadow-2xl border border-white/5"></div>
-                        <div class="absolute inset-4 bg-[#111] rounded-lg border border-white/10 flex flex-col items-center justify-center p-8">
-                            <div class="animate-spin-slow w-48 h-48 rounded-full border-4 border-dashed border-zinc-700 flex items-center justify-center">
-                                <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center border border-white/10">
-                                    <span class="material-symbols-outlined text-4xl text-on-surface-variant">album</span>
-                                </div>
-                            </div>
-                            <div class="mt-8 text-center">
-                                <p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.3em] uppercase mb-1">Aircraft Production</p>
-                                <p class="font-headline-md text-headline-md text-primary">SIDE A</p>
-                            </div>
+                    <div class="w-72 h-72 md:w-96 md:h-96 relative group overflow-hidden rounded-xl border border-white/10 shadow-2xl glass-card">
+                        <img id="vis-preview-1" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" src="visualizer_closed_eye.jpg" alt="Visualizer - Longing" />
+                        <img id="vis-preview-2" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="visualizer_closed_eye_stars.jpg" alt="Visualizer - Grief" />
+                        <img id="vis-preview-3" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" src="visualizer_open_eyes.png" alt="Visualizer - Realization" />
+                        
+                        <!-- Overlay filter glow -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute bottom-6 left-6 z-10">
+                            <span class="font-label-sm text-label-sm text-sunset-gold tracking-widest uppercase">[Visualizer Preview]</span>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--burnt-crimson)] opacity-10 rounded-xl mix-blend-overlay"></div>
                     </div>
                 </div>
                 <!-- Narrative -->
@@ -485,13 +485,13 @@
                     </p>
                     <div class="grid grid-cols-3 gap-4 pt-8">
                         <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5">
-                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYQyj_oLLIp0-LJqYk8cbLdrs2jtXBuzTQA9NxdsPC8aBCMJ5zm96Oal5PmCkzR1itSEoqkomfaQzclF9TcHNzOVjvpHu0zJw-GYUjMzBjPSPhUFh9aM4_EwpLcSo6Vb6mCud2GqsvAHWj9NTgK2azTXIKfhhez4q7MLqMfdgrpq9Tqz-yPxPZPN45solxq7RXbcE_g74q0f4vabJyL76-qa8N-WcjLVz3rbBa6UkoA0oPyhEFN9xYoJtp_eKOcPClINR3ThrpaQ"/>
+                            <img class="w-full h-full object-cover opacity-70" src="visualizer_closed_eye.jpg" alt="Visualizer Closed Eye" />
                         </div>
                         <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5 mt-8">
-                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlzS7IKg2ax3hP3O2zj3JM6iKEfGPYV5S4-TS8-8mgj-XKKcfLpKjmL9ALIIdHSaKYvgVCjcX3RvHngzjD7PYd4c7YxDsEKTzyGYbyxRuGXO1W_ePW_Zl6WRF2DfzEPfMigeuSkzNriT2KexzWi_M9P9JMcPcCqwTXpbW-x39t-UYDQG7GG3nZWx2vBF3xmV4ftxZGes6JHkoSj6szd6k4Zwk9_60DcGb4zwQjeVrXtDD6Ymb3ZYLyIyfGRbKaqp0EOX-sBHsuPA"/>
+                            <img class="w-full h-full object-cover opacity-70" src="visualizer_closed_eye_stars.jpg" alt="Visualizer Closed Eye Stars" />
                         </div>
                         <div class="h-40 bg-zinc-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-white/5">
-                            <img class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0bpEo4yX7KmdAx507Zd9034wfqdCPBRe1ddUPOqJeqGkOfCLa5DGyNy3HSqIA0cxPX7HBWeVx_3VetTNk6WODfFIS97JWYBqoXYG-4Td-k87cZISjCE1UaKBQrqfnDczfhjIQkkt1ggJ_ZNcbbbbGl-jXufu7xqXKWbNOhM7EsiUDuaHoTj5ArD7RF_ioqF9xPhY6SqO9GOcG80KasfS1Pr_mHMlBh3E8_9LhmY9Ud716Ou-YEvg2ImBv11qK-f_rfdO0x0lamw"/>
+                            <img class="w-full h-full object-cover opacity-70" src="visualizer_open_eyes.png" alt="Visualizer Open Eyes" />
                         </div>
                     </div>
                 </div>
@@ -1216,6 +1216,34 @@
             if (typeof loadConfessions === 'function') {
                 loadConfessions();
             }
+
+            // Toggle hero title images fade (Sarkar x Aditya Billboard)
+            let showSarkar = true;
+            setInterval(() => {
+                const imgSarkar = document.getElementById('hero-title-sarkar');
+                const imgAditya = document.getElementById('hero-title-aditya');
+                if (imgSarkar && imgAditya) {
+                    showSarkar = !showSarkar;
+                    imgSarkar.style.opacity = showSarkar ? '1' : '0';
+                    imgAditya.style.opacity = showSarkar ? '0' : '1';
+                }
+            }, 4000);
+
+            // Toggle visualizer preview images fade
+            let activeVisIndex = 0;
+            const visImagesCount = 3;
+            setInterval(() => {
+                const img1 = document.getElementById('vis-preview-1');
+                const img2 = document.getElementById('vis-preview-2');
+                const img3 = document.getElementById('vis-preview-3');
+                const visImgs = [img1, img2, img3];
+                
+                if (visImgs.every(img => img)) {
+                    visImgs[activeVisIndex].style.opacity = '0';
+                    activeVisIndex = (activeVisIndex + 1) % visImagesCount;
+                    visImgs[activeVisIndex].style.opacity = '1';
+                }
+            }, 3000);
         });
 
         // Initialize Audio context on first click
@@ -1229,12 +1257,17 @@
                 audioSource = audioCtx.createMediaElementSource(audio);
                 biquadFilter = audioCtx.createBiquadFilter();
 
-                // Start filter wide open
+                // Start filter in ambient mode if we are not in player-section
                 biquadFilter.type = 'lowpass';
-                biquadFilter.frequency.setValueAtTime(22000, audioCtx.currentTime);
+                const initialFreq = currentSectionId === 'player-section' ? 22000 : 800;
+                biquadFilter.frequency.setValueAtTime(initialFreq, audioCtx.currentTime);
 
                 audioSource.connect(biquadFilter);
                 biquadFilter.connect(audioCtx.destination);
+                
+                if (currentSectionId !== 'player-section') {
+                    audio.playbackRate = 0.85;
+                }
             } catch (e) {
                 console.error("Web Audio API not supported or blocked", e);
             }
@@ -1255,7 +1288,7 @@
                 isMuted = false;
                 trackPlaying = true;
                 if (icon) icon.innerText = 'volume_up';
-                if (status) status.innerText = '[Ambient Playing]';
+                if (status) status.innerText = currentSectionId === 'player-section' ? '[Lyrics Synced]' : '[Ambient Playing]';
                 if (playIcon) playIcon.innerText = 'pause';
                 if (storyPlayIcon) storyPlayIcon.innerText = 'pause';
                 if (audioCtx && audioCtx.state === 'suspended') {
@@ -1291,7 +1324,7 @@
                 const icon = document.getElementById('audio-icon');
                 const status = document.getElementById('audio-status');
                 if (icon) icon.innerText = 'volume_up';
-                if (status) status.innerText = '[Ambient Playing]';
+                if (status) status.innerText = currentSectionId === 'player-section' ? '[Lyrics Synced]' : '[Ambient Playing]';
                 if (audioCtx && audioCtx.state === 'suspended') {
                     audioCtx.resume();
                 }
@@ -1423,6 +1456,41 @@
             // Update shared section state
             currentSectionId = targetId;
 
+            // Handle dynamic background audio playback rate and autoplays
+            const audio = document.getElementById('bg-audio');
+            if (audio) {
+                if (targetId === 'player-section') {
+                    audio.playbackRate = 1.0;
+                    if (audio.paused) {
+                        audio.play();
+                        trackPlaying = true;
+                        isMuted = false;
+                        const icon = document.getElementById('audio-icon');
+                        const statusIndicator = document.getElementById('audio-status');
+                        const playIcon = document.getElementById('play-btn-icon');
+                        const storyPlayIcon = document.getElementById('story-play-icon');
+                        if (icon) icon.innerText = 'volume_up';
+                        if (statusIndicator) statusIndicator.innerText = '[Lyrics Synced]';
+                        if (playIcon) playIcon.innerText = 'pause';
+                        if (storyPlayIcon) storyPlayIcon.innerText = 'pause';
+                        if (audioCtx && audioCtx.state === 'suspended') {
+                            audioCtx.resume();
+                        }
+                    } else {
+                        const statusIndicator = document.getElementById('audio-status');
+                        if (statusIndicator) statusIndicator.innerText = '[Lyrics Synced]';
+                    }
+                } else {
+                    audio.playbackRate = 0.85;
+                    const statusIndicator = document.getElementById('audio-status');
+                    if (statusIndicator) {
+                        if (!isMuted) {
+                            statusIndicator.innerText = '[Ambient Playing]';
+                        }
+                    }
+                }
+            }
+
             // 1. Activate threshold veil & particles
             threshold.classList.add('active');
             threshold.style.opacity = '1';
@@ -1468,9 +1536,9 @@
 
                 // If navigating to chronicles-section, initialize the active phase
                 if (targetId === 'chronicles-section') {
-                    const audio = document.getElementById('bg-audio');
-                    if (audio && !audio.paused && audio.currentTime >= 118 && audio.currentTime <= 156) {
-                        syncInstallationSequence(audio.currentTime);
+                    const audioEl = document.getElementById('bg-audio');
+                    if (audioEl && !audioEl.paused && audioEl.currentTime >= 118 && audioEl.currentTime <= 156) {
+                        syncInstallationSequence(audioEl.currentTime);
                     } else {
                         activateInstallationPhase('longing', false);
                     }
@@ -1493,9 +1561,10 @@
                         targetSection.classList.remove('distort-active');
                     });
 
-                    // Sweep filter back to 22000Hz (Lifting lowpass)
+                    // Sweep filter back to clear or ambient lowpass
                     if (audioCtx && biquadFilter) {
-                        biquadFilter.frequency.exponentialRampToValueAtTime(22000, audioCtx.currentTime + TRANSITION_CONFIG.audioUnmuffleDuration);
+                        const targetFreq = targetId === 'player-section' ? 22000 : 800;
+                        biquadFilter.frequency.exponentialRampToValueAtTime(targetFreq, audioCtx.currentTime + TRANSITION_CONFIG.audioUnmuffleDuration);
                     }
 
                     setTimeout(() => {
